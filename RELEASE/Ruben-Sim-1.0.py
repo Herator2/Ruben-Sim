@@ -3,9 +3,13 @@ import random
 from colorama import Fore, Style
 import time
 
+# ============================
+VERSION = "V 1.0.2"
+# ============================
+
 SCREEN_WIDTH = 80   # Default
 SCREEN_HEIGHT = 24     # Default
-Spacer = "=" * 80   # Default
+Spacer = "=" * SCREEN_WIDTH   # Default
 Loop = True
 while Loop:
 
@@ -41,6 +45,7 @@ while Loop:
             OldEnergy = 0
             OldBattery = 0
             Dead = False    # SELF EXPLANATORY
+            Dev = False     # Developer mode
 
 
         def render():
@@ -114,7 +119,10 @@ while Loop:
         print(Style.BRIGHT + Fore.WHITE + Spacer)
         print(" ")
         print("Welcome to the Ruben Simulator")
-        print("V 1.0 - STABLE")
+        if Dev:
+            print("RELEASE -", VERSION, " - DEVELOPER MODE / NOT LEGITIMATE RUN")
+        else:
+            print("RELEASE -", VERSION)
         print("Make sure to report any unusual " + Fore.LIGHTBLUE_EX + "occurrences" + Fore.WHITE + " or " + Fore.LIGHTGREEN_EX + "bugs" + Fore.WHITE + " to help development!")
         print(" ")
         print(Spacer)
@@ -313,6 +321,29 @@ while Loop:
                 SCREEN_HEIGHT = int(input(">>>"))
                 for x in range(1, SCREEN_HEIGHT):
                     print(" ")
+
+        # Dev Menu:
+        elif Option == 4:
+            print(Spacer)
+            print("DEV MENU")
+            print(Spacer)
+            print("| 1 | - SET 'Detention' VARIABLE TO 'True'")
+            print("| 2 | - SET 'Time' VARIABLE")
+            print("| - | - CLOSE DEV MENU")
+            print(Spacer)
+            Option = int(input(">>>"))
+
+            if Option == 1:
+                Dev = True
+                Detention = True
+                print("Detention set to True")
+                stall = input(">>>")
+
+            if Option == 2:
+                Dev = True
+                Time = int(input("NUMBER - >>>"))
+                print("Time set to: ", Time)
+                stall = input(">>>")
 
         # LAUNCH
         else:
@@ -2140,7 +2171,10 @@ while Loop:
                     print(C3, " C3s")
                     print(C4, " C4s")
                     print(Spacer)
-                    print("STABLE: RELEASE - V 1.0")
+                    if Dev:
+                        print("RELEASE -", VERSION, " - DEVELOPER MODE / NOT LEGITIMATE RUN")
+                    else:
+                        print("RELEASE -", VERSION)
                     print(Spacer)
 
                     # STALL
