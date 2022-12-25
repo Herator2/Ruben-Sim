@@ -128,8 +128,155 @@ while Loop:
 
         # Tutorial
         if Option == 2:
-            print("Tutorial")
-            print("THIS ISN'T FINISHED YET!")
+            print(Spacer)
+            print("SETUP:")
+            print(Spacer)
+            print("| 1 | - Stats and displays")
+            print("| 2 | - Scenarios and Stat Changes")
+            print("| 3 | - Time and lessons")
+            print("| 4 | - Detentions and consequences")
+            print("| - | - Close tutorial")
+            print(Spacer)
+            Option = int(input(">>>"))
+
+            if Option == 1:
+                for x in range(1, SCREEN_HEIGHT):
+                    print(" ")
+                print(Spacer)
+                print("Stats are the fundamentals of this game")
+                print("If any of your stats reach zero: You lose")
+                stall = input(">>>")
+
+                # GENERATE STATS
+                Popularity = random.randint(20, 30)
+                Popularity = float(Popularity)
+                Popularity = Popularity / 10
+                Focus = random.randint(30, 50)
+                Focus = float(Focus)
+                Focus = Focus / 10
+                Happiness = random.randint(40, 80)
+                Happiness = float(Happiness)
+                Happiness = Happiness / 10
+                Energy = random.randint(60, 70)
+                Energy = float(Energy)
+                Energy = Energy / 10
+                Battery = random.randint(80, 100)
+                # GENERATE STATS
+
+                render()
+
+                print("In this randomly generated starting stat display, it shows you that happiness is", Happiness, " and that Battery is", Battery, "%")
+                print("This is how stats will be displayed every scenario")
+
+                # noinspection PyRedeclaration
+                stall = input(">>>")
+
+                print(Spacer)
+
+                print("Continue To 2: Scenarios? ")
+                Option = int(input("1: yes   2: no"))
+                if Option == 1:
+                    Option = 2
+                else:
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
+
+            if Option == 2:
+                for x in range(1, SCREEN_HEIGHT):
+                    print(" ")
+                print(Spacer)
+                print("Scenarios are another fundamental part of this game")
+                print("One scenario happens every period but some may have multiple options ")
+
+                stall = input(">>>")
+
+                render()
+                Scenario = "Bored"
+                print("You are bored, what do you do? ")
+                print(" ")
+                print(Spacer)
+                print("| 1 | - Throw paper at teacher")
+                print("| 2 | - Play games on IPad")
+                print("| 3 | - Chat with friends")
+                print("| 4 | - Dont do anything")
+                print(Spacer)
+                print(">>>")
+                print(" ")
+                print("This a example of a Scenario")
+                print("When prompted by '>>>' type the number of the option you want to pick")
+                print("This will Apply the relevant stat changes from that option and may give you a second 'mini' scenario")
+
+                # noinspection PyRedeclaration
+                stall = input(">>>")
+
+                print(Spacer)
+
+                print("Continue To 3: Time and lessons? ")
+                Option = int(input("1: yes   2: no"))
+                if Option == 1:
+                    Option = 3
+                else:
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
+
+            if Option == 3:
+                for x in range(1, SCREEN_HEIGHT):
+                    print(" ")
+                print(Spacer)
+                print("Time is handled in this game via periods")
+                print("There are 6 work periods(Period 1 - 6) and a break period inbetween P2 and P3 and a lunch period inbetween P4 and P5")
+
+                stall = input(">>>")
+
+                print("Periods have different scenarios that can happen and different lessons")
+
+                # noinspection PyRedeclaration
+                stall = input(">>>")
+
+                print("Lessons can happen in period 1 - 6 and not at break or lunch (In that case the lesson IS break or lunch as well as the Period)")
+                print("There are many lesson specific scenarios and there is a new lesson generator that can make doubles and stop reoccurrences")
+
+                # noinspection PyRedeclaration
+                stall = input(">>>")
+                print(Spacer)
+                print("Continue To 4: Detention? ")
+                Option = int(input("1: yes   2: no"))
+                if Option == 1:
+                    Option = 4
+                else:
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
+
+            if Option == 4:
+                for x in range(1, SCREEN_HEIGHT):
+                    print(" ")
+                print(Spacer)
+                print("Detentions happen at the end of the day (Period 6) and occur if you get a C2")
+
+                stall = input(">>>")
+
+                print("The 'C's (Short for consequence) are 'Bad Points' aka taking a marble out of the jar (Scary!)")
+                print("A C1 Doesnt have much effect but if you get 3, can equate to a C2")
+                print("A C2 Gives you a detention but if you get 3, can equate to a C3")
+                print("A C3 Gives you an 'Isolation'(Isolated from the rest of the school for 3 days while your stats slowly go down) but if you get 3, can equate to a C4")
+                print("A C4 Ends the game and prompts you to try again")
+
+                # noinspection PyRedeclaration
+                stall = input(">>>")
+
+                print("A Normal Detention (ANY MODE ACCEPT IMPOSSIBLE) Is relatively harmless: It decreases all your stats from ~1 to ~2.5")
+                print("However to add extra challenge if you are playing on impossible: It HALVES all your stats!")
+
+                # noinspection PyRedeclaration
+                # stall = input(">>>")
+                # print(Spacer)
+                # print("Continue To 4: Detention? ")
+                # Option = int(input("1: yes   2: no"))
+                # if Option == 1:
+                #       Option = 4
+                # else:
+                #       for x in range(1, SCREEN_HEIGHT):
+                #           print(" ")
 
         # Setup
         elif Option == 3:
