@@ -7,6 +7,8 @@ import time
 VERSION = "V 1.1-BETA"
 # ============================
 
+x = 0
+y = 0
 SCREEN_WIDTH = 80   # Default
 SCREEN_HEIGHT = 24     # Default
 Spacer = "=" * SCREEN_WIDTH   # Default
@@ -48,6 +50,7 @@ while Loop:
             OldBattery = 0   # For end of day screen and some calculations
             Dead = False    # SELF EXPLANATORY
             Dev = False     # Developer mode
+            WasThereAIsolationToday = False     # Are you an idiot   READ THE NAME
 
 
         def render():
@@ -330,8 +333,9 @@ while Loop:
             print("DEV MENU")
             print(Spacer)
             print("| 1 | - SET 'Detention' VARIABLE TO 'True'")
-            print("| 2 | - SET 'Time' VARIABLE")
-            print("| - | - CLOSE DEV MENU")
+            print("| 2 | - SET 'Isolation' VARIABLE TO 'True'")
+            print("| 3 | - SET 'Time' VARIABLE")
+            print("| 4 | - CLOSE DEV MENU")
             print(Spacer)
             Option = int(input(">>>"))
 
@@ -342,6 +346,12 @@ while Loop:
                 stall = input(">>>")
 
             if Option == 2:
+                Dev = True
+                Isolation = True
+                print("Isolation set to True")
+                stall = input(">>>")
+
+            if Option == 3:
                 Dev = True
                 Time = int(input("NUMBER - >>>"))
                 print("Time set to: ", Time)
@@ -401,6 +411,10 @@ while Loop:
 
         # LESSON ENGINE AND SET PERIOD TIME AND DAY INFO
         if True:
+
+            # SPACE
+            for x in range(1, SCREEN_HEIGHT):
+                print(" ")
 
             # LESSONS BREAK AND LUNCH SKIP
             if Period == "BREAK":
@@ -649,29 +663,92 @@ while Loop:
 
         # Space
         if True:
-            # SPACE
-            for x in range(1, SCREEN_HEIGHT):
-                print(" ")
+
             stall = input()
             for x in range(1, SCREEN_HEIGHT):
                 print(" ")
 
         # Isolations
-        if Period == "PERIOD 1":
+        if Period == "PERIOD 1" and Isolation == True:
+            # Disable Isolations
+            Isolation = False
+
+            # Skip Scenarios
+            WasThereAIsolationToday = True
+
             for x in range(1, 6):
                 for y in range(1, SCREEN_HEIGHT):
                     print(" ")
-                print(Period)
+                if y == 0:
+                    print("PERIOD 1")
+                if y == 1:
+                    print("PERIOD 2")
+                if y == 2:
+                    print("PERIOD 3")
+                if y == 3:
+                    print("PERIOD 4")
+                if y == 4:
+                    print("PERIOD 5")
+                if y == 5:
+                    print("PERIOD 6")
                 print("Your Stats Went Down")
                 Time = Time + 1
                 time.sleep(1)
-                Popularity = Popularity - (random.randint(1, 4) * 10 * Multiplier)
-                Focus = Focus - (random.randint(1, 10) * 10 * Focus)
-                Happiness = Happiness - (random.randint(1, 20) * 10 * Multiplier)
-                Energy = Energy - (random.randint(1, 4) * 10 * Multiplier)
+                Popularity = Popularity - (random.randint(1, 4) / (10 * Multiplier))
+                Focus = Focus - (random.randint(1, 10) / (10 * Focus))
+                Happiness = Happiness - (random.randint(1, 20) / (10 * Multiplier))
+                Energy = Energy - (random.randint(1, 4) / (10 * Multiplier))
+
+            # REFINE
+            if True:
+                # REFINE OVER 10/100
+                if Popularity > 10:
+                    Popularity = 10
+                if Focus > 10:
+                    Focus = 10
+                if Happiness > 10:
+                    Happiness = 10
+                if Energy > 10:
+                    Energy = 10
+                if Battery > 100:
+                    Battery = 100
+
+                # REFINE UNDER 0
+                if Popularity < 0:
+                    Popularity = 0
+                if Focus < 0:
+                    Focus = 0
+                if Happiness < 0:
+                    Happiness = 0
+                if Energy < 0:
+                    Energy = 0
+                if Battery < 0:
+                    Battery = 0
+
+                # ROUND
+                Popularity = round(Popularity, 1)
+                Focus = round(Focus, 1)
+                Happiness = round(Happiness, 1)
+                Energy = round(Energy, 1)
+
+                # C1/C2/C3/C4 CONVERSION
+                if C1 > 2:
+                    C1 = C1 - 3
+                    C2 = C2 + 1
+                    print("You got 3 C1s You got a C2")
+                    Detention = True
+                if C2 > 2:
+                    C2 = C2 - 3
+                    C3 = C3 + 1
+                    print("You got 3 C2s You got a C3")
+                    Isolation = True
+                if C3 > 2:
+                    C3 = C3 - 3
+                    C4 = C4 + 1
+                    print("You got 3 C3s You got a C4")
 
         # MAIN - SCENARIOS
-        if True:
+        if not WasThereAIsolationToday:
 
             # Setup
             if True:
@@ -1928,6 +2005,7 @@ while Loop:
                             if not Detention:
                                 Detention = True
                                 DetentionLesson = Lesson
+                            C2 = C2 + 1
                             Focus = Focus + 0.3
                             Happiness = Happiness - 0.8 * Multiplier
                             Energy = Energy - 0.5 * Multiplier
@@ -1993,8 +2071,13 @@ while Loop:
                 MainLoop = False
                 stall = input(">>>")
 
+        else:
+            # Set to False
+            WasThereAIsolationToday = False
+
         # Stall and Refine
         if True:
+
             # STALL
             print("PRESS ENTER TO CONTINUE")
             stall = input(">>>")
@@ -2083,15 +2166,13 @@ while Loop:
 
         # End, Time, Charging
         if True:
-            for x in range(1, SCREEN_HEIGHT):
-                print(" ")
-            render()
             # END
             if Time >= 40 or C4 == 1 or Happiness == 0 or Energy == 0 or Popularity == 0 or Focus == 0 or Dead == True:
                 # GAME OVER
 
                 for x in range(1, SCREEN_HEIGHT):
                     print(" ")
+                render()
                 print(Spacer)
                 Mainloop = False
 
