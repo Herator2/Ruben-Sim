@@ -20,6 +20,7 @@ while Loop:
             Mainloop = False    # GameLoop
             # noinspection PyRedeclaration
             Time = 1    # Period 1
+            Period = "PERIOD1"
             Lesson = "Co"   # Backup
             IPad = True     # Have an IPad
             Multiplier = 0.9    # Normal
@@ -402,7 +403,7 @@ while Loop:
         if True:
 
             # Old Stats
-            if Time == 1 or Time == 2 or Time == 3 or Time == 4 or Time == 5 or Time == 6 or Time == 7 or Time == 8:
+            if Time == 1 or Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
                 OldPopularity = Popularity
                 OldFocus = Focus
                 OldHappiness = Happiness
@@ -640,6 +641,19 @@ while Loop:
             stall = input()
             for x in range(1, SCREEN_HEIGHT):
                 print(" ")
+
+        # Isolations
+        if Time == 1 or Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
+            for x in range(1, 6):
+                for y in range(1, SCREEN_HEIGHT):
+                    print(" ")
+                print(Period)
+                print("Your Stats Went Down")
+                time.sleep(1)
+                Popularity = Popularity - (random.randint(1, 4) * 10 * Multiplier)
+                Focus = Focus - (random.randint(1, 10) * 10 * Focus)
+                Happiness = Happiness - (random.randint(1, 20) * 10 * Multiplier)
+                Energy = Energy - (random.randint(1, 4) * 10 * Multiplier)
 
         # MAIN - SCENARIOS
         if True:
@@ -886,6 +900,7 @@ while Loop:
                                     print("The teacher calls Mr Brooks who catches up to you easily")
                                     print("You got a C3")
                                     C3 = C3 + 1
+                                    Isolation = True
                                     Popularity = Popularity + 2.3
                                     Happiness = Happiness - 4.6 * Multiplier
                                     Energy = Energy - 4.7 * Multiplier
@@ -2017,7 +2032,6 @@ while Loop:
                     C4 = C4 + 1
                     print("You got 3 C3s You got a C4")
 
-
         # DETENTION - NEEDS UPGRADE
         if Detention == True and Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
             for x in range(1, SCREEN_HEIGHT):
@@ -2430,6 +2444,22 @@ while Loop:
 
             # Set Time
             Time = Time + 1
+            if Period == "PERIOD1":
+                Period = "PERIOD2"
+            elif Period == "PERIOD2":
+                Period = "BREAK"
+            elif Period == "BREAK":
+                Period = "PERIOD3"
+            elif Period == "PERIOD3":
+                Period = "PERIOD4"
+            elif Period == "PERIOD4":
+                Period = "LUNCH"
+            elif Period == "LUNCH":
+                Period = "PERIOD5"
+            elif Period == "PERIOD5":
+                Period = "PERIOD6"
+            elif Period == "PERIOD6":
+                Period = "PERIOD1"
 
 if True:
     print("See you next time!")
