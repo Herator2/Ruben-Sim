@@ -4,7 +4,7 @@ from colorama import Fore, Style
 import time
 
 # ============================
-VERSION = "V 1.0.2"
+VERSION = "V 1.1-BETA"
 # ============================
 
 SCREEN_WIDTH = 80   # Default
@@ -25,6 +25,7 @@ while Loop:
             Multiplier = 0.9    # Normal
             TempPeriodDisplay = "PERIOD 1"  # Used In Game Over
             Detention = False   # Is there Detention Rn?
+            Isolation = False   # Is there Isolation rn?
             DetentionLesson = "Co"  # The lesson you got detention in
             if True:    # Consequence
                 C1 = 0
@@ -2004,12 +2005,18 @@ while Loop:
                 if C1 > 2:
                     C1 = C1 - 3
                     C2 = C2 + 1
+                    print("You got 3 C1s You got a C2")
+                    Detention = True
                 if C2 > 2:
                     C2 = C2 - 3
                     C3 = C3 + 1
+                    print("You got 3 C2s You got a C3")
+                    Isolation = True
                 if C3 > 2:
                     C3 = C3 - 3
                     C4 = C4 + 1
+                    print("You got 3 C3s You got a C4")
+
 
         # DETENTION - NEEDS UPGRADE
         if Detention == True and Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
