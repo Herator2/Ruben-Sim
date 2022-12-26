@@ -1,7 +1,9 @@
 # Ruben-Sim
 
+
 Ruben-Sim is a resource management sort of game where you are set in a school and you have to make it through a week
 You have to balence the stats:
+
 
   1.) Popularity
   
@@ -15,7 +17,9 @@ You have to balence the stats:
   
   Battery is your IPad power which you carry around with you at all times. Unless it get taken off you!
 
+
 # Difficulty
+
 
 There are Multiple different Difficulty modes:
 
@@ -29,7 +33,8 @@ Hard x1.5
 
 Impossible x2.0
 
-The multiplier for each mode effects negative changes not positive ones
+
+The multiplier for each mode effects negative changes not positive ones:
 
 ETC:
 
@@ -44,9 +49,12 @@ Impossible
 
 # Availibility
 
+
 The game is availible for free on anytjing that runs python but it has some python module dependences:
 
+
 # DEPENDENCIES
+
 
 Colorama
 
@@ -56,6 +64,9 @@ Random
 
 Decimal (COMING SOON)
 
+
 # END NOTE
 
+
 Any feedback is greatly apreciated and bug reports and enhancemnents are welcome!
+
