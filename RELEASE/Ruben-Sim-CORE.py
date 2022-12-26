@@ -20,32 +20,32 @@ while Loop:
             Mainloop = False    # GameLoop
             # noinspection PyRedeclaration
             Time = 1    # Period 1
-            Period = "PERIOD1"
-            Lesson = "Co"   # Backup
-            IPad = True     # Have an IPad
+            Period = "PERIOD 1"  # Store the Period
+            Day = "MONDAY"  # Store the Day
+            Lesson = "Co"   # Backup lesson incase lesson gen fails
+            DisplayLesson = "COMPUTING"
+            IPad = True     # Have an IPad?
             Multiplier = 0.9    # Normal
-            TempPeriodDisplay = "PERIOD 1"  # Used In Game Over
             Detention = False   # Is there Detention Rn?
             Isolation = False   # Is there Isolation rn?
             DetentionLesson = "Co"  # The lesson you got detention in
-            if True:    # Consequence
-                C1 = 0
-                C2 = 0
-                C3 = 0
-                C4 = 0
-            Lessonloop = True
-            CoLessonCounter = 0
-            DtLessonCounter = 0
-            EnLessonCounter = 0
-            SpLessonCounter = 0
-            HiLessonCounter = 0
-            ScLessonCounter = 0
-            LastLesson = "None"
-            OldPopularity = 0
-            OldFocus = 0
-            OldHappiness = 0
-            OldEnergy = 0
-            OldBattery = 0
+            C1 = 0  # Consequence 1
+            C2 = 0  # Consequence 2
+            C3 = 0  # Consequence 3
+            C4 = 0  # Consequence 4
+            Lessonloop = True   # Make
+            CoLessonCounter = 0     # How many of this lesson today?
+            DtLessonCounter = 0     # How many of this lesson today?
+            EnLessonCounter = 0     # How many of this lesson today?
+            SpLessonCounter = 0     # How many of this lesson today?
+            HiLessonCounter = 0     # How many of this lesson today?
+            ScLessonCounter = 0     # How many of this lesson today?
+            LastLesson = "None"     # Lesson Used For Doubles In P2, P4 and P6 (SET IN P1, P3 and P5)
+            OldPopularity = 0   # For end of day screen and some calculations
+            OldFocus = 0   # For end of day screen and some calculations
+            OldHappiness = 0   # For end of day screen and some calculations
+            OldEnergy = 0   # For end of day screen and some calculations
+            OldBattery = 0   # For end of day screen and some calculations
             Dead = False    # SELF EXPLANATORY
             Dev = False     # Developer mode
 
@@ -399,27 +399,19 @@ while Loop:
     # GameLoop
     while Mainloop:
 
-        # Lessons, Space, Time info, Stall and Space
+        # LESSON ENGINE AND SET PERIOD TIME AND DAY INFO
         if True:
 
-            # Old Stats
-            if Time == 1 or Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
-                OldPopularity = Popularity
-                OldFocus = Focus
-                OldHappiness = Happiness
-                OldEnergy = Energy
-                OldBattery = Battery
-
-            # LESSON SETTING: BREAK OR LUNCH
-            if Time == 3 or Time == 11 or Time == 19 or Time == 27 or Time == 35:
+            # LESSONS BREAK AND LUNCH SKIP
+            if Period == "BREAK":
                 Lesson = "B"
-            elif Time == 6 or Time == 14 or Time == 22 or Time == 30 or Time == 38:
+            elif Period == "LUNCH":
                 Lesson = "L"
 
-            # LESSON SETTING: ALL OTHER LESSONS
+            # LESSON SETTING: CORE
             else:
                 # Reset Last Lesson and Counters At Start Of Day
-                if Time == 1 or Time == 9 or Time == 17 or Time == 25 or Time == 33:
+                if Period == "PERIOD 1":
                     LastLesson = "None"
                     CoLessonCounter = 0
                     DtLessonCounter = 0
@@ -427,9 +419,14 @@ while Loop:
                     SpLessonCounter = 0
                     HiLessonCounter = 0
                     ScLessonCounter = 0
+                    OldPopularity = Popularity
+                    OldFocus = Focus
+                    OldHappiness = Happiness
+                    OldEnergy = Energy
+                    OldBattery = Battery
 
                 # NORMAL LESSON GENERATION - P1 P3 P5
-                if Time == 1 or Time == 9 or Time == 17 or Time == 25 or Time == 33 or Time == 4 or Time == 12 or Time == 20 or Time == 28 or Time == 36 or Time == 7 or Time == 15 or Time == 23 or Time == 31 or Time == 39:
+                if Period == "PERIOD 1" or Period == "PERIOD 3" or Period == "PERIOD 5":
 
                     # Normal Lesson Changer
                     Lessonloop = True
@@ -483,7 +480,7 @@ while Loop:
                         LastLesson = Lesson
 
                 # NORMAL LESSON GENERATION - P2 P4 P6
-                elif Time == 2 or Time == 10 or Time == 18 or Time == 26 or Time == 34 or Time == 5 or Time == 13 or Time == 21 or Time == 29 or Time == 37 or Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
+                elif Period == "PERIOD 2" or Period == "PERIOD 4" or Period == "PERIOD 6":
                     # Random
                     GenericRandom = random.randint(1, 10)
 
@@ -571,47 +568,6 @@ while Loop:
                     print("Time = " + Time)
                     stall = input(">>>")
 
-            # SPACE
-            for x in range(1, SCREEN_HEIGHT):
-                print(" ")
-
-            # TIME INFO ETC.
-            if True:
-
-                # PRINT DAY - WORKING
-                if Time == 1 or Time == 2 or Time == 3 or Time == 4 or Time == 5 or Time == 6 or Time == 7 or Time == 8:
-                    print("MONDAY")
-                elif Time == 9 or Time == 10 or Time == 11 or Time == 12 or Time == 13 or Time == 14 or Time == 15 or Time == 16:
-                    print("TUESDAY")
-                elif Time == 17 or Time == 18 or Time == 19 or Time == 20 or Time == 21 or Time == 22 or Time == 23 or Time == 24:
-                    print("WEDNESDAY")
-                elif Time == 25 or Time == 26 or Time == 27 or Time == 28 or Time == 29 or Time == 30 or Time == 31 or Time == 32:
-                    print("THURSDAY")
-                elif Time == 33 or Time == 34 or Time == 35 or Time == 36 or Time == 37 or Time == 38 or Time == 39 or Time == 40:
-                    print("FRIDAY")
-                else:
-                    print("you not meant to see this")
-
-                # PRINT TIME - WORKING
-                if Time == 1 or Time == 9 or Time == 17 or Time == 25 or Time == 33:
-                    print("PERIOD: 1")
-                elif Time == 2 or Time == 10 or Time == 18 or Time == 26 or Time == 34:
-                    print("PERIOD: 2")
-                elif Time == 3 or Time == 11 or Time == 19 or Time == 27 or Time == 35:
-                    print("BREAK")
-                elif Time == 4 or Time == 12 or Time == 20 or Time == 28 or Time == 36:
-                    print("PERIOD: 3")
-                elif Time == 5 or Time == 13 or Time == 21 or Time == 29 or Time == 37:
-                    print("PERIOD: 4")
-                elif Time == 6 or Time == 14 or Time == 22 or Time == 30 or Time == 38:
-                    print("LUNCH")
-                elif Time == 7 or Time == 15 or Time == 23 or Time == 31 or Time == 39:
-                    print("PERIOD: 5")
-                elif Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
-                    print("PERIOD: 6")
-                else:
-                    print("You not meant to see this idiot coder")
-
                 # PRINT LESSON - WORKING
                 if Lesson == "Co":
                     print("COMPUTING")
@@ -632,23 +588,82 @@ while Loop:
                 elif Lesson == "Re":
                     print("RE")
                 elif Lesson == "B":
-                    print(" ")      # BREAK SKIP
+                    print(" ")  # BREAK SKIP
                 elif Lesson == "L":
-                    print(" ")      # LUNCH SKIP
+                    print(" ")  # LUNCH SKIP
                 else:
                     print("lesson not recognised")
 
+            # SET DAY
+            if True:
+                # SET DAY
+                if Time == 1 or Time == 2 or Time == 3 or Time == 4 or Time == 5 or Time == 6 or Time == 7 or Time == 8:
+                    Day = "MONDAY"
+                    print(Day)
+                elif Time == 9 or Time == 10 or Time == 11 or Time == 12 or Time == 13 or Time == 14 or Time == 15 or Time == 16:
+                    Day = "TUESDAY"
+                    print(Day)
+                elif Time == 17 or Time == 18 or Time == 19 or Time == 20 or Time == 21 or Time == 22 or Time == 23 or Time == 24:
+                    Day = "WEDNESDAY"
+                    print(Day)
+                elif Time == 25 or Time == 26 or Time == 27 or Time == 28 or Time == 29 or Time == 30 or Time == 31 or Time == 32:
+                    Day = "THURSDAY"
+                    print(Day)
+                elif Time == 33 or Time == 34 or Time == 35 or Time == 36 or Time == 37 or Time == 38 or Time == 39 or Time == 40:
+                    Day = "FRIDAY"
+                    print(Day)
+                else:
+                    Day = "UNKNOWN"
+                    print(Day)
+
+            # Print Period
+            print(Period)
+
+            # SET 'DisplayLesson'
+            if True:
+
+                if Lesson == "Co":
+                    DisplayLesson = "COMPUTING"
+                elif Lesson == "Dt":
+                    DisplayLesson = "DESIGN TECH"
+                elif Lesson == "En":
+                    DisplayLesson = "ENGLISH"
+                elif Lesson == "Sp":
+                    DisplayLesson = "SPANISH"
+                elif Lesson == "Hi":
+                    DisplayLesson = "HISTORY"
+                elif Lesson == "Sc":
+                    DisplayLesson = "SCIENCE"
+                elif Lesson == "Pe":
+                    DisplayLesson = "PE"
+                elif Lesson == "Ma":
+                    DisplayLesson = "MATH"
+                elif Lesson == "Re":
+                    DisplayLesson = "RE"
+                elif Lesson == "B":
+                    DisplayLesson = " "    # BREAK SKIP
+                elif Lesson == "L":
+                    DisplayLesson = " "     # LUNCH SKIP
+                else:
+                    print("UNRECOGNISED LESSON")
+
+        # Space
+        if True:
+            # SPACE
+            for x in range(1, SCREEN_HEIGHT):
+                print(" ")
             stall = input()
             for x in range(1, SCREEN_HEIGHT):
                 print(" ")
 
         # Isolations
-        if Time == 1 or Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
+        if Period == "PERIOD 1":
             for x in range(1, 6):
                 for y in range(1, SCREEN_HEIGHT):
                     print(" ")
                 print(Period)
                 print("Your Stats Went Down")
+                Time = Time + 1
                 time.sleep(1)
                 Popularity = Popularity - (random.randint(1, 4) * 10 * Multiplier)
                 Focus = Focus - (random.randint(1, 10) * 10 * Focus)
@@ -2033,52 +2048,16 @@ while Loop:
                     print("You got 3 C3s You got a C4")
 
         # DETENTION - NEEDS UPGRADE
-        if Detention == True and Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40:
+        if Detention == True and Period == "PERIOD 6":
             for x in range(1, SCREEN_HEIGHT):
                 print(" ")
             # TIME INFO ETC.
             if True:
                 # PRINT DAY - WORKING
-                if Time == 1 or Time == 2 or Time == 3 or Time == 4 or Time == 5 or Time == 6 or Time == 7 or Time == 8:
-                    print("MONDAY")
-                elif Time == 9 or Time == 10 or Time == 11 or Time == 12 or Time == 13 or Time == 14 or Time == 15 or Time == 16:
-                    print("TUESDAY")
-                elif Time == 17 or Time == 18 or Time == 19 or Time == 20 or Time == 21 or Time == 22 or Time == 23 or Time == 24:
-                    print("WEDNESDAY")
-                elif Time == 25 or Time == 26 or Time == 27 or Time == 28 or Time == 29 or Time == 30 or Time == 31 or Time == 32:
-                    print("THURSDAY")
-                elif Time == 33 or Time == 34 or Time == 35 or Time == 36 or Time == 37 or Time == 38 or Time == 39 or Time == 40:
-                    print("FRIDAY")
-                else:
-                    print("you not meant to see this")
-
+                print(Day)
                 print("DETENTION")
+                print(DisplayLesson)
 
-                # PRINT LESSON - WORKING
-                if DetentionLesson == "Co":
-                    print("COMPUTING")
-                elif DetentionLesson == "Dt":
-                    print("DESIGN TECH")
-                elif DetentionLesson == "En":
-                    print("ENGLISH")
-                elif DetentionLesson == "Sp":
-                    print("SPANISH")
-                elif DetentionLesson == "Hi":
-                    print("HISTORY")
-                elif DetentionLesson == "Sc":
-                    print("SCIENCE")
-                elif DetentionLesson == "Pe":
-                    print("PE")
-                elif DetentionLesson == "Ma":
-                    print("MATH")
-                elif DetentionLesson == "Re":
-                    print("RE")
-                elif DetentionLesson == "B":
-                    print("BREAK")
-                elif DetentionLesson == "L":
-                    print("LUNCH")
-                else:
-                    print("lesson not recognised")
             stall = input(">>>")
             for x in range(1, SCREEN_HEIGHT):
                 print(" ")
@@ -2108,123 +2087,90 @@ while Loop:
                 print(" ")
             render()
             # END
-            if Time == 40 or C4 == 1 or Happiness == 0 or Energy == 0 or Popularity == 0 or Focus == 0 or Dead == True:
-                Mainloop = False
-                if Time == 1 or Time == 9 or Time == 17 or Time == 25 or Time == 33:
-                    TempPeriodDisplay = "PERIOD: 1"
-                elif Time == 2 or Time == 10 or Time == 18 or Time == 26 or Time == 34:
-                    TempPeriodDisplay = "PERIOD: 2"
-                elif Time == 3 or Time == 11 or Time == 19 or Time == 27 or Time == 35:
-                    TempPeriodDisplay = "BREAK"
-                elif Time == 4 or Time == 12 or Time == 20 or Time == 28 or Time == 36:
-                    TempPeriodDisplay = "PERIOD: 3"
-                elif Time == 5 or Time == 13 or Time == 21 or Time == 29 or Time == 37:
-                    TempPeriodDisplay = "PERIOD: 4"
-                elif Time == 6 or Time == 14 or Time == 22 or Time == 30 or Time == 38:
-                    TempPeriodDisplay = "LUNCH"
-                elif Time == 7 or Time == 15 or Time == 23 or Time == 31 or Time == 29:
-                    TempPeriodDisplay = "PERIOD: 5"
-                elif Time == 8 or Time == 16 or Time == 24 or Time == 32 or Time == 40 or Time > 40:
-                    TempPeriodDisplay = "PERIOD: 6"
-                else:
-                    TempPeriodDisplay = "You not meant to see this idiot coder"
-
+            if Time >= 40 or C4 == 1 or Happiness == 0 or Energy == 0 or Popularity == 0 or Focus == 0 or Dead == True:
                 # GAME OVER
-                if True:
-                    for x in range(1, SCREEN_HEIGHT):
-                        print(" ")
-                    print(Spacer)
 
-                    if Time == 40 or Time > 40:
-                        print(Style.BRIGHT + Fore.LIGHTGREEN_EX + "GAME DONE!:")
-                        print(Fore.LIGHTCYAN_EX + "You made it to the end of the week!")
-                    elif Dead:
-                        print(Fore.LIGHTRED_EX + "YOU DIED")
-                        print("Dont die next time? Just a tip")
-                    else:
-                        print(Fore.LIGHTRED_EX + "GAME OVER:")
-                    if C4 == 1:
-                        print(Fore.LIGHTCYAN_EX + "You got expelled - Try again")
-                    elif Popularity == 0:
-                        print(Fore.LIGHTCYAN_EX + "Your popularity reached zero - Try again")
-                    elif Happiness == 0:
-                        print(Fore.LIGHTCYAN_EX + "Your happiness reached zero - Try again")
-                    elif Focus == 0:
-                        print(Fore.LIGHTCYAN_EX + "Your focus reached zero - Try again")
-                    elif Energy == 0:
-                        print(Fore.LIGHTCYAN_EX + "Your energy reached zero - Try again")
-
-                    print(Fore.WHITE + Spacer)
-
-                    if Multiplier == 0.75:
-                        print(Fore.LIGHTGREEN_EX + "| MODE | - EASY")
-                    elif Multiplier == 1.0:
-                        print(Fore.GREEN + "| MODE | - NORMAL")
-                    elif Multiplier == 1.25:
-                        print(Fore.BLUE + "| MODE | - HARD")
-                    elif Multiplier == 1.5:
-                        print(Fore.RED + "| MODE | - INSANE")
-                    elif Multiplier == 2.0:
-                        print(Fore.RED + Style.DIM + "| MODE | - IMPOSSIBLE")
-
-                    print(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + Spacer)
-
-                    # PRINT DAY - WORKING
-                    if True:
-                        if Time == 1 or Time == 2 or Time == 3 or Time == 4 or Time == 5 or Time == 6 or Time == 7 or Time == 8:
-                            print("MONDAY")
-                        elif Time == 9 or Time == 10 or Time == 11 or Time == 12 or Time == 13 or Time == 14 or Time == 15 or Time == 16:
-                            print("TUESDAY")
-                        elif Time == 17 or Time == 18 or Time == 19 or Time == 20 or Time == 21 or Time == 22 or Time == 23 or Time == 24:
-                            print("WEDNESDAY")
-                        elif Time == 25 or Time == 26 or Time == 27 or Time == 28 or Time == 29 or Time == 30 or Time == 31 or Time == 32:
-                            print("THURSDAY")
-                        elif Time == 33 or Time == 34 or Time == 35 or Time == 36 or Time == 37 or Time == 38 or Time == 39 or Time == 40:
-                            print("FRIDAY")
-                        else:
-                            print("you not meant to see this")
-                    # Print Time
-                    print(TempPeriodDisplay)
-
-                    print(Spacer)
-                    print(C1, " C1s")
-                    print(C2, " C2s")
-                    print(C3, " C3s")
-                    print(C4, " C4s")
-                    print(Spacer)
-                    if Dev:
-                        print("RELEASE -", VERSION, " - DEVELOPER MODE / NOT LEGITIMATE RUN")
-                    else:
-                        print("RELEASE -", VERSION)
-                    print(Spacer)
-
-                    # STALL
-                    stall = input(">>>")
-
-                    for x in range(1, SCREEN_HEIGHT):
-                        print(" ")
-
-                    print(Spacer)
+                for x in range(1, SCREEN_HEIGHT):
                     print(" ")
-                    print("Do you want to play again?")
+                print(Spacer)
+                Mainloop = False
+
+                if Time >= 40:
+                    print(Style.BRIGHT + Fore.LIGHTGREEN_EX + "GAME DONE!:")
+                    print(Fore.LIGHTCYAN_EX + "You made it to the end of the week!")
+                elif Dead:
+                    print(Fore.LIGHTRED_EX + "YOU DIED")
+                    print("Dont die next time? Just a tip")
+                else:
+                    print(Fore.LIGHTRED_EX + "GAME OVER:")
+                if C4 == 1:
+                    print(Fore.LIGHTCYAN_EX + "You got expelled - Try again")
+                elif Popularity == 0:
+                    print(Fore.LIGHTCYAN_EX + "Your popularity reached zero - Try again")
+                elif Happiness == 0:
+                    print(Fore.LIGHTCYAN_EX + "Your happiness reached zero - Try again")
+                elif Focus == 0:
+                    print(Fore.LIGHTCYAN_EX + "Your focus reached zero - Try again")
+                elif Energy == 0:
+                    print(Fore.LIGHTCYAN_EX + "Your energy reached zero - Try again")
+
+                print(Fore.WHITE + Spacer)
+
+                if Multiplier == 0.75:
+                    print(Fore.LIGHTGREEN_EX + "| MODE | - EASY")
+                elif Multiplier == 1.0:
+                    print(Fore.GREEN + "| MODE | - NORMAL")
+                elif Multiplier == 1.25:
+                    print(Fore.BLUE + "| MODE | - HARD")
+                elif Multiplier == 1.5:
+                    print(Fore.RED + "| MODE | - INSANE")
+                elif Multiplier == 2.0:
+                    print(Fore.RED + Style.DIM + "| MODE | - IMPOSSIBLE")
+
+                print(Style.RESET_ALL + Style.BRIGHT + Fore.WHITE + Spacer)
+
+                print(Day)
+                print(Period)
+
+                print(Spacer)
+                print(C1, " C1s")
+                print(C2, " C2s")
+                print(C3, " C3s")
+                print(C4, " C4s")
+                print(Spacer)
+                if Dev:
+                    print("RELEASE -", VERSION, " - DEVELOPER MODE / NOT LEGITIMATE RUN")
+                else:
+                    print("RELEASE -", VERSION)
+                print(Spacer)
+
+                # STALL
+                stall = input(">>>")
+
+                for x in range(1, SCREEN_HEIGHT):
                     print(" ")
-                    print(Spacer)
-                    print("| 1 | - Yes")
-                    print("| 2 | - No")
-                    print(Spacer)
-                    Option = input(">>>")
-                    if Option == 1:
-                        print("RESTARTING: PLEASE WAIT")
-                        for x in range(1, 100):
-                            print(" ")
-                    else:
-                        Loop = False
-                        print("EXITING: PLEASE WAIT")
-                        for x in range(1, 100):
-                            print(" ")
+
+                print(Spacer)
+                print(" ")
+                print("Do you want to play again?")
+                print(" ")
+                print(Spacer)
+                print("| 1 | - Yes")
+                print("| 2 | - No")
+                print(Spacer)
+                Option = input(">>>")
+                if Option == 1:
+                    print("RESTARTING: PLEASE WAIT")
+                    for x in range(1, 100):
+                        print(" ")
+                else:
+                    Loop = False
+                    print("EXITING: PLEASE WAIT")
+                    for x in range(1, 100):
+                        print(" ")
 
             # END OF DAY SCREEN
-            if Time == 8 or Time == 16 or Time == 24 or Time == 32:
+            if Period == "PERIOD 6":
                 PopularityTempDisplay = (OldPopularity - Popularity) * -1
                 FocusTempDisplay = (OldFocus - Focus) * -1
                 HappinessTempDisplay = (OldHappiness - Happiness) * -1
@@ -2444,22 +2390,22 @@ while Loop:
 
             # Set Time
             Time = Time + 1
-            if Period == "PERIOD1":
-                Period = "PERIOD2"
-            elif Period == "PERIOD2":
+            if Period == "PERIOD 1":
+                Period = "PERIOD 2"
+            elif Period == "PERIOD 2":
                 Period = "BREAK"
             elif Period == "BREAK":
-                Period = "PERIOD3"
-            elif Period == "PERIOD3":
-                Period = "PERIOD4"
-            elif Period == "PERIOD4":
+                Period = "PERIOD 3"
+            elif Period == "PERIOD 3":
+                Period = "PERIOD 4"
+            elif Period == "PERIOD 4":
                 Period = "LUNCH"
             elif Period == "LUNCH":
-                Period = "PERIOD5"
-            elif Period == "PERIOD5":
-                Period = "PERIOD6"
-            elif Period == "PERIOD6":
-                Period = "PERIOD1"
+                Period = "PERIOD 5"
+            elif Period == "PERIOD 5":
+                Period = "PERIOD 6"
+            elif Period == "PERIOD 6":
+                Period = "PERIOD 1"
 
 if True:
     print("See you next time!")
