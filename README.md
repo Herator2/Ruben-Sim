@@ -49,8 +49,11 @@ The game is availible for free on anytjing that runs python but it has some pyth
 # DEPENDENCIES
 
 Colorama
+
 Time
+
 Random
+
 Decimal (COMING SOON)
 
 # END NOTE
