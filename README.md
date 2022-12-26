@@ -1,8 +1,8 @@
 # Ruben-Sim
 
 
-Ruben-Sim is a resource management sort of game where you are set in a school and you have to make it through a week
-You have to balence the stats:
+Ruben-Sim is a resource management sort of game where you are set in a school, and you have to make it through a week
+You have to balance the stats:
 
 
   1.) Popularity
@@ -47,10 +47,10 @@ Impossible
 + 1 Popularity    - 2 Energy
 
 
-# Availibility
+# Availability
 
 
-The game is availible for free on anytjing that runs python but it has some python module dependences:
+The game is available for free on anything that runs python, but it has some python module dependencies:
 
 
 # DEPENDENCIES
@@ -68,5 +68,5 @@ Decimal (COMING SOON)
 # END NOTE
 
 
-Any feedback is greatly apreciated and bug reports and enhancemnents are welcome!
+Any feedback is greatly appreciated and bug reports and enhancements are welcome!
 
