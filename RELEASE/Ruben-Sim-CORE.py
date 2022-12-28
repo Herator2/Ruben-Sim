@@ -24,7 +24,7 @@ while Loop:
             Time = 1    # Period 1
             Period = "PERIOD 1"  # Store the Period
             Day = "MONDAY"  # Store the Day
-            Lesson = "Co"   # Backup lesson incase lesson gen fails
+            Lesson = "Co"   # Backup lesson in case lesson gen fails
             DisplayLesson = "COMPUTING"
             IPad = True     # Have an IPad?
             Multiplier = 0.9    # Normal
@@ -211,7 +211,7 @@ while Loop:
                 print("| 1 | - Throw paper at teacher")
                 print("| 2 | - Play games on IPad")
                 print("| 3 | - Chat with friends")
-                print("| 4 | - Dont do anything")
+                print("| 4 | - Don't do anything")
                 print(Spacer)
                 print(">>>")
                 print(" ")
@@ -237,7 +237,7 @@ while Loop:
                     print(" ")
                 print(Spacer)
                 print("Time is handled in this game via periods")
-                print("There are 6 work periods(Period 1 - 6) and a break period inbetween P2 and P3 and a lunch period inbetween P4 and P5")
+                print("There are 6 work periods(Period 1 - 6) and a break period between P2 and P3 and a lunch period between P4 and P5")
 
                 stall = input(">>>")
 
