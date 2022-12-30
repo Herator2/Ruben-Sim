@@ -114,8 +114,6 @@ while Loop:
             print(" ")
 
 
-        # End Of Setup
-
     # MenuLoop / Launcher
     while Menuloop:
         # Welcome
@@ -862,7 +860,7 @@ while Loop:
                         for x in range(1, SCREEN_HEIGHT):
                             print(" ")
             # 2: EXTRA - COMPLETE - MULTIPLIER
-            elif ScenarioNumber == 2:
+            elif IPad and ScenarioNumber == 2:
                 while Menuloop:
                     render()
                     Scenario = "Ipad Charge"
@@ -878,11 +876,6 @@ while Loop:
                     print(Spacer)
                     if Option == 1 or Option == 2 or Option == 3 or Option == 4:
                         Menuloop = False
-                    if Option == 1 or Option == 2 or Option == 3 and IPad == False:
-                        for x in range(1, SCREEN_HEIGHT):
-                            print(" ")
-                        print(Spacer)
-                        print("You don't have an IPad right now, idiot.")
                     elif Option == 1:
                         GenericRandom = random.randint(1, 10)
                         if GenericRandom < 6:
@@ -1033,7 +1026,7 @@ while Loop:
                         for x in range(1, SCREEN_HEIGHT):
                             print(" ")
             # 3: EXTRA - COMPLETE - MULTIPLIER
-            elif ScenarioNumber == 3:
+            elif ScenarioNumber == 2 or ScenarioNumber == 3:
                 while Menuloop:
                     render()
                     Scenario = "You are hungry"
@@ -2252,15 +2245,19 @@ while Loop:
 
             # END OF DAY SCREEN
             if Period == "PERIOD 6":
-                PopularityTempDisplay = (OldPopularity - Popularity) * -1
-                FocusTempDisplay = (OldFocus - Focus) * -1
-                HappinessTempDisplay = (OldHappiness - Happiness) * -1
-                EnergyTempDisplay = (OldEnergy - Energy) * -1
-                BatteryTempDisplay = (OldBattery - Battery) * -1
-                PopularityTempDisplay = round(PopularityTempDisplay, 1)
-                FocusTempDisplay = round(FocusTempDisplay, 1)
-                HappinessTempDisplay = round(HappinessTempDisplay, 1)
-                EnergyTempDisplay = round(EnergyTempDisplay, 1)
+
+                # Get the difference between the old stats and new stats
+                PopularityDifference = (OldPopularity - Popularity) * -1
+                FocusDifference = (OldFocus - Focus) * -1
+                HappinessDifference = (OldHappiness - Happiness) * -1
+                EnergyDifference = (OldEnergy - Energy) * -1
+                BatteryDifference = (OldBattery - Battery) * -1
+
+                # Round
+                PopularityDifference = round(PopularityDifference, 1)
+                FocusDifference = round(FocusDifference, 1)
+                HappinessDifference = round(HappinessDifference, 1)
+                EnergyDifference = round(EnergyDifference, 1)
                 Popularity = round(Popularity, 1)
                 Focus = round(Focus, 1)
                 Happiness = round(Happiness, 1)
@@ -2274,200 +2271,144 @@ while Loop:
                 print(" ")
                 print(Fore.LIGHTCYAN_EX + "DAY SUMMARY")
                 print(" ")
-
-                print(Fore.WHITE + Spacer)
-                if PopularityTempDisplay < 0:
-                    print(Fore.WHITE + "|" + str(OldPopularity))
-                else:
-                    print(Fore.WHITE + "|" + str(OldPopularity))
-
-                if FocusTempDisplay < 0:
-                    print(Fore.WHITE + "|" + str(OldFocus))
-                else:
-                    print(Fore.WHITE + "|" + str(OldFocus))
-
-                if HappinessTempDisplay < 0:
-                    print(Fore.WHITE + "|" + str(OldHappiness))
-                else:
-                    print(Fore.WHITE + "|" + str(OldHappiness))
-
-                if EnergyTempDisplay < 0:
-                    print(Fore.WHITE + "|" + str(OldEnergy))
-                else:
-                    print(Fore.WHITE + "|" + str(OldEnergy))
-
-                if BatteryTempDisplay < 0:
-                    print(Fore.WHITE + "|" + str(OldBattery))
-                else:
-                    print(Fore.WHITE + "|" + str(OldBattery))
-                print(Fore.WHITE + Spacer)
-
-                time.sleep(1)
-                stall = input(">>>")
-
-                for x in range(1, SCREEN_HEIGHT):
-                    print(" ")
-
                 print(Spacer)
-                print(" ")
-                print(Fore.LIGHTCYAN_EX + "DAY SUMMARY")
-                print(" ")
-                print(Fore.WHITE + Spacer)
-                if PopularityTempDisplay < 0:
-                    print(Fore.LIGHTRED_EX + "|" + Fore.WHITE + str(OldPopularity) + Fore.LIGHTRED_EX + "   -", PopularityTempDisplay * -1)
-                elif PopularityTempDisplay == 0.0:
-                    print(Fore.WHITE + "|" + Fore.WHITE + str(OldPopularity) + Fore.WHITE + "    ", "0.0")
-                else:
-                    print(Fore.LIGHTGREEN_EX + "|" + Fore.WHITE + str(OldPopularity) + Fore.LIGHTGREEN_EX + "   +", PopularityTempDisplay)
+                
+                # Popularity
+                if True:
+                    # Old
+                    print("You had", OldPopularity, "Popularity at the start of today")
 
-                if FocusTempDisplay < 0:
-                    print(Fore.LIGHTRED_EX + "|" + Fore.WHITE + str(OldFocus) + Fore.LIGHTRED_EX + "   -", FocusTempDisplay * -1)
-                elif FocusTempDisplay == 0:
-                    print(Fore.WHITE + "|" + Fore.WHITE + str(OldFocus) + Fore.WHITE + "    ", "0.0")
-                else:
-                    print(Fore.LIGHTGREEN_EX + "|" + Fore.WHITE + str(OldFocus) + Fore.LIGHTGREEN_EX + "   +", FocusTempDisplay)
+                    # Up
+                    if PopularityDifference < 0:
+                        print("Your Popularity went up by", PopularityDifference)
+                    # Same
+                    elif PopularityDifference == 0:
+                        print("Your Popularity stayed the same")
+                    # Down
+                    elif PopularityDifference < 0:
+                        print("Your Popularity went down by", PopularityDifference)
+                    # ERROR
+                    else:
+                        print("ERROR: Popularitydifference is not detected")
 
-                if HappinessTempDisplay < 0:
-                    print(Fore.LIGHTRED_EX + "|" + Fore.WHITE + str(OldHappiness) + Fore.LIGHTRED_EX + "   -", HappinessTempDisplay * -1)
-                elif HappinessTempDisplay < 0:
-                    print(Fore.WHITE + "|" + Fore.WHITE + str(OldHappiness) + Fore.WHITE + "    ", "0.0")
-                else:
-                    print(Fore.LIGHTGREEN_EX + "|" + Fore.WHITE + str(OldHappiness) + Fore.LIGHTGREEN_EX + "   +", HappinessTempDisplay)
+                    # New
+                    print("You now have", OldPopularity, "Popularity")
+                    # Stall
+                    stall = input(">>>")
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
+                
+                # Focus
+                if True:
+                    # Old
+                    print("You had", OldFocus, "Focus at the start of today")
 
-                if EnergyTempDisplay < 0:
-                    print(Fore.LIGHTRED_EX + "|" + Fore.WHITE + str(OldEnergy) + Fore.LIGHTRED_EX + "   -", EnergyTempDisplay * -1)
-                elif EnergyTempDisplay < 0:
-                    print(Fore.WHITE + "|" + Fore.WHITE + str(OldEnergy) + Fore.WHITE + "    ", "0.0")
-                else:
-                    print(Fore.LIGHTGREEN_EX + "|" + Fore.WHITE + str(OldEnergy) + Fore.LIGHTGREEN_EX + "   +", EnergyTempDisplay)
+                    # Up
+                    if FocusDifference < 0:
+                        print("Your Focus went up by", FocusDifference)
+                    # Same
+                    elif FocusDifference == 0:
+                        print("Your Focus stayed the same")
+                    # Down
+                    elif FocusDifference < 0:
+                        print("Your Focus went down by", FocusDifference)
+                    # ERROR
+                    else:
+                        print("ERROR: FocusDifference is not detected")
 
-                if BatteryTempDisplay < 0:
-                    print(Fore.LIGHTRED_EX + "|" + Fore.WHITE + str(OldBattery) + Fore.LIGHTRED_EX + "   -", BatteryTempDisplay * -1)
-                elif BatteryTempDisplay < 0:
-                    print(Fore.WHITE + "|" + Fore.WHITE + str(OldBattery) + Fore.WHITE + "    ", "0.0")
-                else:
-                    print(Fore.LIGHTGREEN_EX + "|" + Fore.WHITE + str(OldBattery) + Fore.LIGHTGREEN_EX + "   +", BatteryTempDisplay)
-                print(Fore.WHITE + Spacer)
+                    # New
+                    print("You now have", Focus, "Focus")
+                    # Stall
+                    stall = input(">>>")
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
+   
+                # Happiness
+                if True:
+                    # Old
+                    print("You had", OldHappiness, "Happiness at the start of today")
 
-                time.sleep(1)
-                stall = input(">>>")
+                    # Up
+                    if HappinessDifference < 0:
+                        print("Your Happiness went up by", HappinessDifference)
+                    # Same
+                    elif HappinessDifference == 0:
+                        print("Your Happiness stayed the same")
+                    # Down
+                    elif HappinessDifference < 0:
+                        print("Your Happiness went down by", HappinessDifference)
+                    # ERROR
+                    else:
+                        print("ERROR: HappinessDifference is not detected")
 
-                for x in range(1, SCREEN_HEIGHT):
-                    print(" ")
+                    # New
+                    print("You now have", Happiness, "Happiness")
+                    # Stall
+                    stall = input(">>>")
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
 
-                print(Spacer)
-                print(" ")
-                print(Fore.LIGHTCYAN_EX + "DAY SUMMARY")
-                print(" ")
-                print(Fore.WHITE + Spacer)
-                if PopularityTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Popularity))
-                else:
-                    print(Fore.GREEN + "|" + str(Popularity))
+                # Energy
+                if True:
+                    # Old
+                    print("You had", OldEnergy, "Energy at the start of today")
 
-                if FocusTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Focus))
-                else:
-                    print(Fore.GREEN + "|" + str(Focus))
+                    # Up
+                    if EnergyDifference < 0:
+                        print("Your Energy went up by", EnergyDifference)
+                    # Same
+                    elif EnergyDifference == 0:
+                        print("Your Energy stayed the same")
+                    # Down
+                    elif EnergyDifference < 0:
+                        print("Your Energy went down by", EnergyDifference)
+                    # ERROR
+                    else:
+                        print("ERROR: EnergyDifference is not detected")
 
-                if HappinessTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Happiness))
-                else:
-                    print(Fore.GREEN + "|" + str(Happiness))
+                    # New
+                    print("You now have", Energy, "Energy")
+                    # Stall
+                    stall = input(">>>")
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")
 
-                if EnergyTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Energy))
-                else:
-                    print(Fore.GREEN + "|" + str(Energy))
+                # Battery
+                if True:
+                    # Old
+                    print("You had", OldBattery, "Battery at the start of the day")
 
-                if BatteryTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Battery))
-                else:
-                    print(Fore.GREEN + "|" + str(Battery))
-                print(Fore.WHITE + Spacer)
+                    # Up
+                    if BatteryDifference < 0:
+                        print("Your Focus went up by", BatteryDifference)
+                    # Same
+                    elif BatteryDifference == 0:
+                        print("Your Focus stayed the same")
+                    # Down
+                    elif BatteryDifference < 0:
+                        print("Your Focus went down by", BatteryDifference)
+                    # ERROR
+                    else:
+                        print("ERROR: BatteryDifference is not detected")
 
-                time.sleep(1)
-                stall = input(">>>")
+                    # New
+                    print("You now have", Battery, "Battery")
+                    # Stall
+                    stall = input(">>>")
+                    for x in range(1, SCREEN_HEIGHT):
+                        print(" ")        
 
-                for x in range(1, SCREEN_HEIGHT):
-                    print(" ")
+                # Battery Overnight Charging
+                if True:
+                    # Print Message
+                    print("Your IPad was charged overnight")
 
-                print(Spacer)
-                print(" ")
-                print(Fore.LIGHTCYAN_EX + "DAY SUMMARY")
-                print(" ")
-                print(Fore.WHITE + Spacer)
-                if PopularityTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Popularity))
-                else:
-                    print(Fore.GREEN + "|" + str(Popularity))
+                    # Battery = Battery + 1 to 50 / (0.75, 1.0, 1.25, 1.5, 2.0)
+                    Battery = Battery + (random.randint(1, 50) / Multiplier)
 
-                if FocusTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Focus))
-                else:
-                    print(Fore.GREEN + "|" + str(Focus))
+                    # Print New
+                    print("You now have", Battery, "Battery")
 
-                if HappinessTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Happiness))
-                else:
-                    print(Fore.GREEN + "|" + str(Happiness))
-
-                if EnergyTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Energy))
-                else:
-                    print(Fore.GREEN + "|" + str(Energy))
-
-                BatteryTempDisplay1 = random.randint(4, 46)
-                if BatteryTempDisplay < 0:
-                    BatteryTempDisplay = random.randint(4, 46)
-                    print(Fore.RED + "|" + str(Battery) + Fore.GREEN + "    +", BatteryTempDisplay1)
-                else:
-                    BatteryTempDisplay = random.randint(4, 46)
-                    print(Fore.GREEN + "|" + str(Battery) + Fore.GREEN + "    +", BatteryTempDisplay1)
-
-                time.sleep(1)
-                stall = input(">>>")
-
-                for x in range(1, SCREEN_HEIGHT):
-                    print(" ")
-
-                print(Spacer)
-                print(" ")
-                print(Fore.LIGHTCYAN_EX + "DAY SUMMARY")
-                print(" ")
-                print(Fore.WHITE + Spacer)
-                if PopularityTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Popularity))
-                else:
-                    print(Fore.GREEN + "|" + str(Popularity))
-
-                if FocusTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Focus))
-                else:
-                    print(Fore.GREEN + "|" + str(Focus))
-
-                if HappinessTempDisplay < 0:
-                    print(Fore.RED + "|" + str(Happiness))
-                else:
-                    print(Fore.GREEN + "|" + str(Happiness))
-
-                Battery = Battery + BatteryTempDisplay
-
-                if Battery > 100:
-                    Battery = 100
-
-                Battery = round(Battery)
-
-                if Battery < OldBattery:
-                    print(Fore.RED + "|" + str(Battery) + Fore.GREEN + "    +", BatteryTempDisplay1)
-                else:
-                    print(Fore.GREEN + "|" + str(Battery) + Fore.GREEN + "    +", BatteryTempDisplay1)
-
-                print(Fore.WHITE + Spacer)
-
-                stall = input(">>>")
-                for x in range(1, SCREEN_HEIGHT):
-                    print(" ")
 
             # Set Time
             Time = Time + 1
