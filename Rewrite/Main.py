@@ -137,42 +137,6 @@ def MainScenario():
     FollowOnScenario = Scenario.get(TempStoreOfOption, "FollowOnScenario")
     AfterMessage = Scenario.get(TempStoreOfOption, "AfterMessage")
 
-    if False:
-        # Test
-        if ScenarioName in ["Test-1"]:
-            # Question
-            print("Test Question")
-            # Options
-            print("Test Opt 1")
-            print("Test Opt 2")
-            print("Test Opt 3")
-            Option = str(input(">>>"))
-
-            # Change vars for applying
-            if Option.lower() in ["1"]:
-                # [Trouble, Focus, Happiness, Money, Energy] 
-                StatChanges = [1, 2, 3, -4, 2]
-                FollowOnScenario = "null"
-                AfterMessage = "null"
-
-            elif Option.lower() in ["2"]:
-                # [Trouble, Focus, Happiness, Money, Energy] 
-                StatChanges = [1, 2, 3, -4, 2]
-                FollowOnScenario = "null"
-                AfterMessage = "null"
-
-            elif Option.lower() in ["3"]:
-                # [Trouble, Focus, Happiness, Money, Energy] 
-                StatChanges = [1, 2, 3, -4, 2]
-                FollowOnScenario = "null"
-                AfterMessage = "null"
-
-            else:
-                print("ERROR THAT IS NOT A ACCEPTED VALUE")
-                StatChanges = [0, 0, 0, 0, 0 ]
-                FollowOnScenario = "null"
-                AfterMessage = "null"
-
     # After Message
     AfterMessagePrint()
 
