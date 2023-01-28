@@ -178,7 +178,7 @@ def ApplyScenarioStatChanges():
         MainScenario()
 
 # Handle moving on time, Period and day
-def TimeLogic():
+def TimeLogic(): 
 
     # Globals again
     global Day
