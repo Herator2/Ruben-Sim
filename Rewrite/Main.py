@@ -1,8 +1,7 @@
 
-# TODO:
-    # Port scenarios
-    # Write documentation
-    # Add a save feature using pickle
+# Todo:
+# Port scenarios
+# Add a save feature using configparser
 
 # CHANGE THESE
 Directory = "Documents/GitHub/Ruben-Sim/Rewrite/Scenarios/"
@@ -10,7 +9,6 @@ Linux = True
 
 # Imports
 import os   # Use to make directories automatically and clear screen
-import pickle   # Use for saving stats later prob
 import random   # Get random lessons and stats
 import configparser     # Scenarios
 
@@ -113,29 +111,53 @@ def MainScenario():
     Scenario.read(Directory + ScenarioName + ".ini")
 
     # Print question from file
-    print(Scenario.get("Main", "Question"))
+    print("| [?] | " + Scenario.get("Main", "Question"))
 
     # Get the number of options to print the correct amount
     NumberOfOptions = int(Scenario.get("Main", "NumberOfOptions"))
 
     # Option Print
     for x in range(NumberOfOptions):
-         print(Scenario.get("Main", "Option" + str(x)))
+         print("| ["+str(x + 1)+"] | - " + Scenario.get("Main", "Option" + str(x)))
 
     # Take option
-    Option = str(input(">>>"))
+    Option = str(input("| [!] | >>>"))
 
     # Get temp store of option
     TempStoreOfOption = "Option"
     TempStoreOfOption = TempStoreOfOption + Option # This should result in something like 'Option3' 
 
-    # Set variables based on option
-    StatChangesTemp = Scenario.get(TempStoreOfOption, "StatChanges")    # This needs formatting
-    print(StatChangesTemp)
-    StatChanges = StatChangesTemp.split()  # Formatted into a list
-    print(StatChanges)
-    FollowOnScenario = Scenario.get(TempStoreOfOption, "FollowOnScenario")
-    AfterMessage = Scenario.get(TempStoreOfOption, "AfterMessage")
+    # Test for random
+    Random = Scenario.get(TempStoreOfOption, "Random")
+
+    # Do random if enabled
+    if Random in ["True", "true", "t", "T"]:
+
+        # Gen random no. between 1 and 10 and get RandomNumber var
+        GenericRandom = random.randint(1, 10)
+        RandomNumber = Scenario.get(TempStoreOfOption, "RandomNumber")
+        RandomNumber = int(RandomNumber)
+
+        # Compare
+        # a in this instance refers to the number put before the fectched vars ETC. [a]StatChanges could mean 1StatChanges
+        if GenericRandom > RandomNumber:
+            a = "1"
+        else:
+            a = "2"
+        
+        # Proceed with setting variables as normal but with the 'a' var
+        StatChangesTemp = Scenario.get(TempStoreOfOption, a+"StatChanges")    # This needs formatting
+        StatChanges = StatChangesTemp.split()  # Formatted into a list
+        FollowOnScenario = Scenario.get(TempStoreOfOption, a+"FollowOnScenario")
+        AfterMessage = Scenario.get(TempStoreOfOption, a+"AfterMessage")
+        
+    # Continue as normal
+    else:
+        # Set variables based on option
+        StatChangesTemp = Scenario.get(TempStoreOfOption, "StatChanges")    # This needs formatting
+        StatChanges = StatChangesTemp.split()  # Formatted into a list
+        FollowOnScenario = Scenario.get(TempStoreOfOption, "FollowOnScenario")
+        AfterMessage = Scenario.get(TempStoreOfOption, "AfterMessage")
 
     # After Message
     AfterMessagePrint()
@@ -332,12 +354,14 @@ def AfterMessagePrint():
     # Does this need explaining tho?
     global AfterMessage
     if AfterMessage != "none":
-        print(AfterMessage)
-        input(">>>")
+        Clear()
+        print("| [-] | - " + AfterMessage)
+        input("| [!] | >>>")
 
 # Game Loop
 # Look above for explaination
 while True:
+
     GetScenario()
     MainScenario()
     TimeLogic()
