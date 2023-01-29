@@ -192,6 +192,35 @@ def ApplyScenarioStatChanges():
     Temp = float(StatChanges[4])
     Energy = Energy + Temp
 
+    # Round the numbers
+    Trouble = round(Trouble, 1)
+    Focus = round(Focus, 1)
+    Happiness = round(Happiness, 1)
+    Money = round(Money, 1)
+    Energy = round(Energy, 1)
+    # Correct if higher
+    if Trouble > 10:
+        Trouble = 10
+    if Focus > 10:
+        Focus = 10
+    if Happiness > 10:
+        Happiness = 10
+    if Money > 10:
+        Money = 10
+    if Energy > 10:
+        Energy = 10
+    # Correct if lower
+    if Trouble < -10:
+        Trouble = -10
+    if Focus < -10:
+        Focus = -10
+    if Happiness < -10:
+        Happiness = -10
+    if Money < -10:
+        Money = -10
+    if Energy < -10:
+        Energy = -10
+
     # Load follow on scenario if there is one
     if FollowOnScenario.lower() != "none":
 
