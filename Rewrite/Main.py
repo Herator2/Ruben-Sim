@@ -1,6 +1,6 @@
 
 # Todo:
-# Port scenarios
+# Port scenarios - 25%
 # Add a save feature using configparser
 
 # CHANGE THESE
@@ -60,7 +60,7 @@ def GetScenario():
     else:
 
         # Get random lesson
-        NumberOfLessons = random.randint(1, 1)
+        NumberOfLessons = random.randint(1, 2)
 
         # Computing
         if NumberOfLessons == 1:
@@ -101,6 +101,7 @@ def MainScenario():
     global StatChanges
     global FollowOnScenario
     global AfterMessage
+    global Lesson
 
     # Print the firt bit of ui
     Clear()
@@ -108,9 +109,10 @@ def MainScenario():
 
     # Load the scenario from the corresponding ini file in 'Directory' using configparser
     Scenario = configparser.ConfigParser()
-    Scenario.read(Directory + ScenarioName + ".ini")
+    Scenario.read(Directory + Lesson + "/" + ScenarioName + ".ini")
 
     # Print question from file
+    print("| [-] | QUESTION:")
     print("| [?] | " + Scenario.get("Main", "Question"))
 
     # Get the number of options to print the correct amount
@@ -268,12 +270,12 @@ def PrintStats():
     # Example of 4 focus
     # | 4 | ----------|====------
     #
-    # Example of -4 focus
+    # Example of - + " - " + DisplayName4 focus
     # |-4 | ------====|---------- 
     #
     # On the left number display - notice how the space dissapears to make room for the minus
     # Print stats
-    print("STATS:")
+    print("| [-] | STATS:")
 
     # Loop start
     for x in range(5):
@@ -281,60 +283,67 @@ def PrintStats():
         # Define TempPlaceholder
         if x == 0:
             TempPlaceholder = Trouble
+            DisplayName = "Trouble"
         elif x == 1:
             TempPlaceholder = Focus
+            DisplayName = "Focus"
         elif x == 2:
             TempPlaceholder = Happiness
+            DisplayName = "Happiness"
         elif x == 3:
             TempPlaceholder = Money
+            DisplayName = "Money"
         else: 
             TempPlaceholder = Energy
+            DisplayName = "Energy"
 
         # IMPORTANT: Decided not to do an algorithm here as it would be too much work
         if TempPlaceholder < -10:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
         elif TempPlaceholder == -10:
-            print("|" + str(TempPlaceholder) + " | ==========|----------")
+            print("|" + str(TempPlaceholder) + " | ==========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -9:
-            print("|" + str(TempPlaceholder) + " | -=========|----------")
+            print("|" + str(TempPlaceholder) + " | -=========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -8:
-            print("|" + str(TempPlaceholder) + " | --========|----------")
+            print("|" + str(TempPlaceholder) + " | --========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -7:
-            print("|" + str(TempPlaceholder) + " | ---=======|----------")
+            print("|" + str(TempPlaceholder) + " | ---=======|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -6:
-            print("|" + str(TempPlaceholder) + " | ----======|----------")
+            print("|" + str(TempPlaceholder) + " | ----======|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -5:
-            print("|" + str(TempPlaceholder) + " | -----=====|----------")
+            print("|" + str(TempPlaceholder) + " | -----=====|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -4:
-            print("|" + str(TempPlaceholder) + " | ------====|----------")
+            print("|" + str(TempPlaceholder) + " | ------====|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -3:
-            print("|" + str(TempPlaceholder) + " | -------===|----------")
+            print("|" + str(TempPlaceholder) + " | -------===|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -2:
-            print("|" + str(TempPlaceholder) + " | --------==|----------")
+            print("|" + str(TempPlaceholder) + " | --------==|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -1:
-            print("|" + str(TempPlaceholder) + " | ---------=|----------")
-        elif TempPlaceholder <= 0:
-            print("|", TempPlaceholder, "| ----------|----------")
+            print("|" + str(TempPlaceholder) + " | ---------=|----------" + " - " + DisplayName)
+        elif TempPlaceholder < 0:
+            print("|" + str(TempPlaceholder) + " | ---------=|----------" + " - " + DisplayName)
+        elif TempPlaceholder == 0:
+            print("|", TempPlaceholder, "| ----------|----------" + " - " + DisplayName)
         elif TempPlaceholder <= 1:
-            print("|", TempPlaceholder, "| ----------|=---------")
+            print("|", TempPlaceholder, "| ----------|=---------" + " - " + DisplayName)
         elif TempPlaceholder <= 2:
-            print("|", TempPlaceholder, "| ----------|==--------")
+            print("|", TempPlaceholder, "| ----------|==--------" + " - " + DisplayName)
         elif TempPlaceholder <= 3:
-            print("|", TempPlaceholder, "| ----------|===-------")
+            print("|", TempPlaceholder, "| ----------|===-------" + " - " + DisplayName)
         elif TempPlaceholder <= 4:
-            print("|", TempPlaceholder, "| ----------|====------")
+            print("|", TempPlaceholder, "| ----------|====------" + " - " + DisplayName)
         elif TempPlaceholder <= 5:
-            print("|", TempPlaceholder, "| ----------|=====-----")
+            print("|", TempPlaceholder, "| ----------|=====-----" + " - " + DisplayName)
         elif TempPlaceholder <= 6:
-            print("|", TempPlaceholder, "| ----------|======----")
+            print("|", TempPlaceholder, "| ----------|======----" + " - " + DisplayName)
         elif TempPlaceholder <= 7:
-            print("|", TempPlaceholder, "| ----------|=======---")
+            print("|", TempPlaceholder, "| ----------|=======---" + " - " + DisplayName)
         elif TempPlaceholder <= 8:
-            print("|", TempPlaceholder, "| ----------|========--")
+            print("|", TempPlaceholder, "| ----------|========--" + " - " + DisplayName)
         elif TempPlaceholder <= 9:
-            print("|", TempPlaceholder, "| ----------|=========-")
+            print("|", TempPlaceholder, "| ----------|=========-" + " - " + DisplayName)
         elif TempPlaceholder <= 10:
-            print("|", TempPlaceholder, "| ----------|==========")
+            print("|", TempPlaceholder, "| ----------|==========" + " - " + DisplayName)
         else:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
 
