@@ -1,0 +1,33 @@
+
+# How they are layed out
+
+Scenarios are layed out in a .ini file. They are read using configparser.
+Scenarios consist of 2 Sections:
+    - Main: Stores vars like the question
+    - Option[x]: Stores option specific vars
+
+# What the values mean
+
+[Main]
+The 'Question' value is used to print the question
+The 'NumberOfOptions' value is used to help specify the number of options
+The 'Option[Number]' value is the option that is printed to the user
+
+[OptionX]
+The 'StatChanges' value is used to store the stat changes for this option
+The 'Random' boolean is used to check whether randomness should be applied - See Randomness
+The 'FollowOnScenario' value is used to specify if anotther senario should immedially take place
+The 'AfterMessage' value is the after message displayed if this option is selected
+    - 'FollowOnScenario' and 'AfterMessage' are turned of by putting: none
+
+# Randomness
+
+Randomness works by getting a number between 1 and 10
+It then compares this to 'RandomNumber'
+It does this like: if Generatednumber > RandomNumber
+If that is true it uses the vars with the 1 infront
+Else it uses the ones with 2
+
+# Naming / Follow On
+
+
