@@ -22,7 +22,7 @@ try:
         Config.write("Linux = True\n")
         Config.write("Directory = Ruben-Sim\n")
         print("Config created in home directory as config.ini:")
-        print("[Main]\nLinux = True\nDirectory =.Ruben-Sim\n")
+        print("[Main]\nLinux = True\nDirectory = Ruben-Sim\n")
     
     # Print
     print("Successful Install!")
