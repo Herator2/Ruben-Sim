@@ -3,14 +3,17 @@
 # Port scenarios - 25%
 # Add a save feature using configparser
 
-# CHANGE THESE
-Directory = "Documents/GitHub/Ruben-Sim/Rewrite/Scenarios/"
-Linux = True
-
 # Imports
 import os   # Use to make directories automatically and clear screen
 import random   # Get random lessons and stats
-import configparser     # Scenarios
+import configparser     # Scenarios and saving
+
+# Get config
+Config = configparser.ConfigParser()
+Config.read("Ruben-Sim/config.ini")
+
+Directory = Config.get("Main", "Directory")
+Linux = Config.get("Main", "Linux")
 
 # Set Variables
 Trouble = 0.0
