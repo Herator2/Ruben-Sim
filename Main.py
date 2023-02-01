@@ -415,7 +415,7 @@ def WriteSave():
         File.write("[Stats]\n")
         File.write("Trouble = 0.0\n")
         File.write("Focus = 0.0\n")
-        File.write("Happiness = 0.0\n")
+        File.write("Happiness =0.0\n")
         File.write("Money = 0.0\n")
         File.write("Energy = 0.0\n")
 
