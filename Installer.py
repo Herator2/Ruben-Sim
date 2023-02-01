@@ -5,7 +5,7 @@ import os
 # DEVELOPER
 Dev = True
 
-# code
+# Code
 if Dev:
     Branch = "Saving"
 else:
@@ -18,6 +18,10 @@ input(">>>")
 
 # Install
 try:
+
+    # Reinstall
+    print("SAY Y TWICE!")
+    os.system("rm -r Ruben-Sim")
 
     # Github Clone
     print("Cloning From Github")
