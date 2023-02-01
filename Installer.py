@@ -20,7 +20,7 @@ try:
     with open("Ruben-Sim/config.ini", "w+") as Config:
         Config.write("[Main]\n")
         Config.write("Linux = True\n")
-        Config.write("Directory = Ruben-Sim\n")
+        Config.write("Directory = Ruben-Sim/\n")
         print("Config created in home directory as config.ini:")
         print("[Main]\nLinux = True\nDirectory = Ruben-Sim\n")
     
