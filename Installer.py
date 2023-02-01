@@ -3,7 +3,7 @@
 import os
 
 # DEVELOPER
-Dev = False
+Dev = True
 
 # code
 if Dev:

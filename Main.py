@@ -220,7 +220,7 @@ def ApplyScenarioStatChanges():
         # Rerun mainscenario
         MainScenario()
 
-# Handle moving on time, Period and day
+# Handle moving on time, Period, day and autosave 
 def TimeLogic(): 
 
     # Globals again
@@ -244,6 +244,9 @@ def TimeLogic():
         
         # Reset period 
         Period = 1
+
+        # Save game
+        WriteSave()
     
     # Not end of day
     else:
