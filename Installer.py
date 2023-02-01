@@ -2,6 +2,15 @@
 # Import
 import os
 
+# DEVELOPER
+Dev = False
+
+# code
+if Dev:
+    Branch = "Dev"
+else:
+    Branch = "main"
+
 # Check for git
 print("INSTALLATION REQUIRES GIT")
 print("Press any key to start")
@@ -12,7 +21,7 @@ try:
 
     # Github Clone
     print("Cloning From Github")
-    os.system("git clone https://github.com/Herator2/Ruben-Sim.git")
+    os.system("git clone https://github.com/Herator2/Ruben-Sim.git --branch " + Branch)
     print("Cloned.")
 
     # Make config
