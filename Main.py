@@ -37,63 +37,43 @@ def GetScenario():
     global Day
     global Lesson
 
+    # Get config
+    ScenarioConfig = configparser.ConfigParser()
+    ScenarioConfig.read(Directory + "Scenarios/Info.ini")
+
+    # Get random lesson
+    NumberOfLessons = random.randint(1, int(ScenarioConfig.get("Main", "NumberOfScenarios")))
+    
     # Break
     if Period == "B":
-
-        # Set first part of scenario name
         ScenarioName = "B"
-        Lesson = ScenarioName
-        # Number of scenarios
-        NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # Add prefix
-        ScenarioName = ScenarioName + "-" + str(NumberOfScenariosForThisLesson)
-
     # Lunch
     elif Period == "L":
-
-        # Set first part of scenario name
         ScenarioName = "L"
-        Lesson = ScenarioName
-        # Number of scenarios
-        NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # Add prefix
-        ScenarioName = ScenarioName + "-" + str(NumberOfScenariosForThisLesson)
-
-    # Normal lesson
+    # Computing
+    elif NumberOfLessons == 1:
+        ScenarioName = "Co"
+    # DT
+    elif NumberOfLessons == 2:
+        ScenarioName = "Dt"
+    # English
+    elif NumberOfLessons == 3:
+        ScenarioName = "En"
+    # Spanish
+    elif NumberOfLessons == 4:
+        ScenarioName = "Sp"
+    # History
+    elif NumberOfLessons == 5:
+        ScenarioName = "Hi"
+    # Science
     else:
+        ScenarioName = "Sc"
 
-        # Get random lesson
-        NumberOfLessons = random.randint(1, 2)
-
-        # Computing
-        if NumberOfLessons == 1:
-            ScenarioName = "Co"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # DT
-        elif NumberOfLessons == 2:
-            ScenarioName = "Dt"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # English
-        elif NumberOfLessons == 3:
-            ScenarioName = "En"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # Spanish
-        elif NumberOfLessons == 4:
-            ScenarioName = "Sp"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # History
-        elif NumberOfLessons == 5:
-            ScenarioName = "Hi"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-        # Science
-        else:
-            ScenarioName = "Sc"
-            NumberOfScenariosForThisLesson = random.randint(1, 1)
-
-        # Main Part
-        Lesson = ScenarioName
-        # Add prefix
-        ScenarioName = ScenarioName + "-" + str(NumberOfScenariosForThisLesson)
+    # Main Part
+    Number = random.randint(1, int(ScenarioConfig.get(ScenarioName, "NumberOfScenarios")))
+    Lesson = ScenarioName
+    # Add prefix
+    ScenarioName = ScenarioName + "-" + str(Number)
             
 # Load the senario
 def MainScenario():
