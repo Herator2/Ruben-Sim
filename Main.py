@@ -456,11 +456,11 @@ def LoadSave():
     # Read vars using configparser 
     Period = Save["Time"]["Period"]
     Day = Save["Time"]["Day"]
-    Trouble = float(Save["Stats"]["Trouble"])
-    Focus = float(Save["Stats"]["Focus"])
-    Happiness = float(Save["Stats"]["Happiness"])
-    Money = float(Save["Stats"]["Money"])
-    Energy = float(Save["Stats"]["Energy"])
+    Trouble = float(Save.get("Stats", "Trouble"))
+    Focus = float(Save.get("Stats","Focus"))
+    Happiness = float(Save.get("Stats","Happiness"))
+    Money = float(Save.get("Stats","Money"))
+    Energy = float(Save.get("Stats","Energy"))
 
 def SaveMenu():
 
@@ -476,7 +476,6 @@ def SaveMenu():
     # Load save
     if Option.lower in ["1"]:
         LoadSave()
-        
 
     # Make new save
     elif Option.lower in ["2", "3"]:
