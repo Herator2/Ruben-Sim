@@ -459,11 +459,31 @@ def LoadSave():
     Money = float(Save["Time"]["Money"])
     Energy = float(Save["Time"]["Energy"])
 
+def SaveMenu():
+
+    # Print
+    print("| [!] | What do you want to do?")
+    print("| [1] | - Load Save")
+    print("| [2] | - Overwrite Save")
+    print("| [3] | - Make New Save")
+
+    # Take input
+    Option = input("| [?] | >>>")
+
+    # Load save
+    if Option.lower in ["1"]:
+        LoadSave()
+
+    # Make new save
+    elif Option.lower in ["2", "3"]:
+        WriteSave()
+
+# Launch / Pre loop
+SaveMenu()
+
 # Game Loop
-# Look above for explaination
 while True:
 
     GetScenario()
     MainScenario()
     TimeLogic()
-    
