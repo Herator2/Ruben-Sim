@@ -426,11 +426,11 @@ def WriteSave():
     # Write vars using configparser 
     Save["Time"]["Period"] = str(Period)
     Save["Time"]["Day"] = str(Day)
-    Save["Time"]["Trouble"] = str(Trouble)
-    Save["Time"]["Focus"] = str(Focus)
-    Save["Time"]["Happiness"] = str(Happiness)
-    Save["Time"]["Money"] = str(Money)
-    Save["Time"]["Energy"] = str(Energy)
+    Save["Stats"]["Trouble"] = str(Trouble)
+    Save["Stats"]["Focus"] = str(Focus)
+    Save["Stats"]["Happiness"] = str(Happiness)
+    Save["Stats"]["Money"] = str(Money)
+    Save["Stats"]["Energy"] = str(Energy)
 
     # Save to file
     with open(Directory + "Saves/Save.ini", "w") as File:
@@ -456,11 +456,11 @@ def LoadSave():
     # Read vars using configparser 
     Period = Save["Time"]["Period"]
     Day = Save["Time"]["Day"]
-    Trouble = float(Save["Time"]["Trouble"])
-    Focus = float(Save["Time"]["Focus"])
-    Happiness = float(Save["Time"]["Happiness"])
-    Money = float(Save["Time"]["Money"])
-    Energy = float(Save["Time"]["Energy"])
+    Trouble = float(Save["Stats"]["Trouble"])
+    Focus = float(Save["Stats"]["Focus"])
+    Happiness = float(Save["Stats"]["Happiness"])
+    Money = float(Save["Stats"]["Money"])
+    Energy = float(Save["Stats"]["Energy"])
 
 def SaveMenu():
 
