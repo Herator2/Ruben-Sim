@@ -379,6 +379,86 @@ def AfterMessagePrint():
         print("| [-] | - " + AfterMessage)
         input("| [!] | >>>")
 
+# Save
+def WriteSave():
+
+    # Globals
+    global Directory
+    global Trouble
+    global Focus
+    global Happiness
+    global Money
+    global Energy
+    global Period
+    global Day
+    global Lesson
+
+    # Create blank save to overwrite
+    with open(Directory + "Saves/Save.ini", "w") as File:
+        File.write("[Main]\n")
+        File.write("Name = Save1\n")
+        File.write("\n")
+        File.write("[Time]\n")
+        File.write("Period = 1\n")
+        File.write("Day = Mon\n")
+        File.write("\n")
+        File.write("[Stats]\n")
+        File.write("Trouble = 0.0\n")
+        File.write("Focus = 0.0\n")
+        File.write("Happiness = 0.0\n")
+        File.write("Money = 0\n")
+        File.write("Energy = 0.0\n")
+
+    # Open save in configparser
+    Save = configparser.ConfigParser()
+    Save.read(Directory + "Saves/Save.ini")
+
+    # Write vars using configparser 
+    Save["Time"]["Period"] = str(Period)
+    Save["Time"]["Day"] = str(Day)
+    Save["Time"]["Trouble"] = str(Trouble)
+    Save["Time"]["Focus"] = str(Focus)
+    Save["Time"]["Happiness"] = str(Happiness)
+    Save["Time"]["Money"] = str(Money)
+    Save["Time"]["Energy"] = str(Energy)
+
+    # Save to file
+    with open(Directory + "Saves/Save.ini", "w") as File:
+        Save.write(File)
+
+#def LoadSave():
+
+    # Globals
+    global Directory
+    global Trouble
+    global Focus
+    global Happiness
+    global Money
+    global Energy
+    global Period
+    global Day
+    global Lesson
+
+    # Open save in configparser
+    Save = configparser.ConfigParser()
+    Save.read(Directory + "Saves/Save.ini")
+
+    # Read vars using configparser 
+    Period = Save["Time"]["Period"]
+    Day = Save["Time"]["Day"]
+    Trouble = Save["Time"]["Trouble"]
+    Focus = Save["Time"]["Focus"]
+    Happiness = Save["Time"]["Happiness"]
+    Money = Save["Time"]["Money"]
+    Energy = Save["Time"]["Energy"]
+
+    # Convert to float
+    Trouble = float(Trouble)
+    Focus = float(Focus)
+    Happiness = float(Happiness)
+    Money = float(Money)
+    Energy = float(Energy)
+
 # Game Loop
 # Look above for explaination
 while True:
