@@ -163,6 +163,13 @@ def ApplyScenarioStatChanges():
     global Money
     global Energy
 
+    # Float
+    Trouble = float(Trouble)
+    Focus = float(Focus)
+    Happiness = float(Happiness)
+    Money = float(Money)
+    Energy = float(Energy)
+
     # Applying var changes from var: 'stat changes'
     Temp = float(StatChanges[0])
     Trouble = Trouble + Temp
@@ -426,7 +433,7 @@ def WriteSave():
     with open(Directory + "Saves/Save.ini", "w") as File:
         Save.write(File)
 
-#def LoadSave():
+def LoadSave():
 
     # Globals
     global Directory
@@ -446,18 +453,11 @@ def WriteSave():
     # Read vars using configparser 
     Period = Save["Time"]["Period"]
     Day = Save["Time"]["Day"]
-    Trouble = Save["Time"]["Trouble"]
-    Focus = Save["Time"]["Focus"]
-    Happiness = Save["Time"]["Happiness"]
-    Money = Save["Time"]["Money"]
-    Energy = Save["Time"]["Energy"]
-
-    # Convert to float
-    Trouble = float(Trouble)
-    Focus = float(Focus)
-    Happiness = float(Happiness)
-    Money = float(Money)
-    Energy = float(Energy)
+    Trouble = float(Save["Time"]["Trouble"])
+    Focus = float(Save["Time"]["Focus"])
+    Happiness = float(Save["Time"]["Happiness"])
+    Money = float(Save["Time"]["Money"])
+    Energy = float(Save["Time"]["Energy"])
 
 # Game Loop
 # Look above for explaination
