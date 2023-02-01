@@ -228,7 +228,7 @@ def TimeLogic():
     global Period
 
     # End of day
-    if str(Period) == 6: 
+    if str(Period) == "6": 
         
         # Move on day
         if Day in ["Mon"]:
