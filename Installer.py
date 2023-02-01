@@ -26,7 +26,7 @@ try:
     
     # Print
     print("Successful Install!")
-    print("Use python3 Ruben-Sim/Rewrite/Main.py to start!")
+    print("Use python3 Ruben-Sim/Main.py to start!")
 
 # Installation error
 except Exception as ErrorMSG:
