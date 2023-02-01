@@ -476,10 +476,12 @@ def SaveMenu():
     # Load save
     if Option.lower in ["1"]:
         LoadSave()
+        
 
     # Make new save
     elif Option.lower in ["2", "3"]:
         WriteSave()
+        LoadSave()
 
 # Launch / Pre loop
 SaveMenu()
