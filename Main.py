@@ -112,7 +112,7 @@ def MainScenario():
 
     # Load the scenario from the corresponding ini file in 'Directory' using configparser
     Scenario = configparser.ConfigParser()
-    Scenario.read(Directory + Lesson + "/" + ScenarioName + ".ini")
+    Scenario.read(Directory + "Scenarios/" + Lesson + "/" + ScenarioName + ".ini")
 
     # Print question from file
     print("| [-] | QUESTION:")

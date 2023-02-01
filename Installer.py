@@ -20,13 +20,13 @@ try:
     with open("Ruben-Sim/config.ini", "w+") as Config:
         Config.write("[Main]\n")
         Config.write("Linux = True\n")
-        Config.write("Directory = Ruben-Sim\n")
+        Config.write("Directory = Ruben-Sim/\n")
         print("Config created in home directory as config.ini:")
         print("[Main]\nLinux = True\nDirectory = Ruben-Sim\n")
     
     # Print
     print("Successful Install!")
-    print("Use python3 .Ruben-Sim/Rewrite/Main.py to start!")
+    print("Use python3 Ruben-Sim/Main.py to start!")
 
 # Installation error
 except Exception as ErrorMSG:
