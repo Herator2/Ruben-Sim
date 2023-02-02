@@ -450,7 +450,7 @@ def LoadSave():
     global Lesson
 
     # DEBUG
-    print("HDAWIUGHAWDGADWIY")
+    input()
 
     # Open save in configparser
     Save = configparser.ConfigParser()
