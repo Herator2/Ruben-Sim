@@ -449,20 +449,34 @@ def LoadSave():
     global Day
     global Lesson
 
+    # DEBUG
+    print("HDAWIUGHAWDGADWIY")
+
     # Open save in configparser
     Save = configparser.ConfigParser()
     Save.read(Directory + "Saves/Save.ini")
 
     # Read vars using configparser 
-    Period = Save["Time"]["Period"]
-    Day = Save["Time"]["Day"]
-    Trouble = float(Save.get("Stats", "Trouble"))
-    Focus = float(Save.get("Stats","Focus"))
-    Happiness = float(Save.get("Stats","Happiness"))
-    Money = float(Save.get("Stats","Money"))
-    Energy = float(Save.get("Stats","Energy"))
+    Period = Save["Time"]["period"]
+    Day = Save["Time"]["day"]
+    Trouble = float(Save.get("Stats", "trouble"))
+    Focus = float(Save.get("Stats","focus"))
+    Happiness = float(Save.get("Stats","happiness"))
+    Money = float(Save.get("Stats","money"))
+    Energy = float(Save.get("Stats","energy"))
 
 def SaveMenu():
+
+    # Globals
+    global Directory
+    global Trouble
+    global Focus
+    global Happiness
+    global Money
+    global Energy
+    global Period
+    global Day
+    global Lesson
 
     # Print
     print("| [!] | What do you want to do?")
