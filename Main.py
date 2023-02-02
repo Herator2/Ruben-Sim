@@ -408,22 +408,6 @@ def WriteSave():
     global Day
     global Lesson
 
-    # Create blank save to overwrite
-    with open(Directory + "Saves/Save.ini", "w") as File:
-        File.write("[Main]\n")
-        File.write("Name = Save1\n")
-        File.write("\n")
-        File.write("[Time]\n")
-        File.write("Period = 1\n")
-        File.write("Day = Mon\n")
-        File.write("\n")
-        File.write("[Stats]\n")
-        File.write("Trouble = 0.0\n")
-        File.write("Focus = 0.0\n")
-        File.write("Happiness = 0.0\n")
-        File.write("Money = 0.0\n")
-        File.write("Energy = 0.0\n")
-
     # Open save in configparser
     Save = configparser.ConfigParser()
     Save.read(Directory + "Saves/Save.ini")
