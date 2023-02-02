@@ -485,7 +485,7 @@ def SaveMenu():
     print("| [3] | - Make New Save")
 
     # Take input
-    Option = input("| [?] | >>>")
+    Option = str(input("| [?] | >>>"))
 
     # Load save
     if Option.lower in ["1"]:
