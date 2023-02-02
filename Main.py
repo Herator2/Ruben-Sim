@@ -323,7 +323,7 @@ def PrintStats():
         if TempPlaceholder < -10:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
         elif TempPlaceholder == -10:
-            print("|" + str(TempPlaceholder) + " | ==========|----------" + " - " + DisplayName)
+            print("|" + str(TempPlaceholder) + "| ==========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -9:
             print("|" + str(TempPlaceholder) + " | -=========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -8:
@@ -365,7 +365,7 @@ def PrintStats():
         elif TempPlaceholder <= 9:
             print("|", TempPlaceholder, "| ----------|=========-" + " - " + DisplayName)
         elif TempPlaceholder <= 10:
-            print("|", TempPlaceholder, "| ----------|==========" + " - " + DisplayName)
+            print("|", TempPlaceholder, " | ----------|==========" + " - " + DisplayName)
         else:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
 
