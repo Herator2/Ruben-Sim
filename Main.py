@@ -389,6 +389,11 @@ def AfterMessagePrint():
         print("| [-] | - " + AfterMessage)
         input("| [!] | >>>")
 
+def DebugInput():
+    
+    # DEBUG
+    input("Debug Input!")
+
 # Save
 def WriteSave():
 
@@ -449,9 +454,6 @@ def LoadSave():
     global Day
     global Lesson
 
-    # DEBUG
-    input()
-
     # Open save in configparser
     Save = configparser.ConfigParser()
     Save.read(Directory + "Saves/Save.ini")
@@ -465,39 +467,13 @@ def LoadSave():
     Money = float(Save.get("Stats","money"))
     Energy = float(Save.get("Stats","energy"))
 
-def SaveMenu():
-
-    # Globals
-    global Directory
-    global Trouble
-    global Focus
-    global Happiness
-    global Money
-    global Energy
-    global Period
-    global Day
-    global Lesson
-
-    # Print
-    print("| [!] | What do you want to do?")
-    print("| [1] | - Load Save")
-    print("| [2] | - Overwrite Save")
-    print("| [3] | - Make New Save")
-
-    # Take input
-    Option = str(input("| [?] | >>>"))
-
-    # Load save
-    if Option.lower in ["1"]:
-        LoadSave()
-
-    # Make new save
-    elif Option.lower in ["2", "3"]:
-        WriteSave()
-        LoadSave()
-
 # Launch / Pre loop
-SaveMenu()
+print("| [?] | SAVE MENU\n| [1] | - Load\n| [2] | - New")
+Option = str(input("| [?] | >>>"))
+if Option == "1":
+    LoadSave()
+else:
+    WriteSave()
 
 # Game Loop
 while True:
