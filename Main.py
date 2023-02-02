@@ -420,7 +420,7 @@ def WriteSave():
         File.write("[Stats]\n")
         File.write("Trouble = 0.0\n")
         File.write("Focus = 0.0\n")
-        File.write("Happiness =0.0\n")
+        File.write("Happiness = 0.0\n")
         File.write("Money = 0.0\n")
         File.write("Energy = 0.0\n")
 
@@ -429,13 +429,13 @@ def WriteSave():
     Save.read(Directory + "Saves/Save.ini")
 
     # Write vars using configparser 
-    Save["Time"]["Period"] = str(Period)
-    Save["Time"]["Day"] = str(Day)
-    Save["Stats"]["Trouble"] = str(Trouble)
-    Save["Stats"]["Focus"] = str(Focus)
-    Save["Stats"]["Happiness"] = str(Happiness)
-    Save["Stats"]["Money"] = str(Money)
-    Save["Stats"]["Energy"] = str(Energy)
+    Save.set("Time", "period", str(Period))
+    Save.set("Time", "day", str(Day))
+    Save.set("Stats", "trouble", str(Trouble))
+    Save.set("Stats", "focus", str(Focus))
+    Save.set("Stats", "happiness", str(Happiness))
+    Save.set("Stats", "money", str(Money))
+    Save.set("Stats", "energy", str(Energy))
 
     # Save to file
     with open(Directory + "Saves/Save.ini", "w") as File:
