@@ -3,11 +3,11 @@
 import os
 
 # DEVELOPER
-Dev = False
+Dev = True
 
-# code
+# Code
 if Dev:
-    Branch = "Dev"
+    Branch = "Saving"
 else:
     Branch = "main"
 
@@ -18,6 +18,10 @@ input(">>>")
 
 # Install
 try:
+
+    # Reinstall
+    print("SAY Y TWICE!")
+    os.system("rm -r Ruben-Sim")
 
     # Github Clone
     print("Cloning From Github")

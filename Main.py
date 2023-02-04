@@ -163,6 +163,13 @@ def ApplyScenarioStatChanges():
     global Money
     global Energy
 
+    # Float
+    Trouble = float(Trouble)
+    Focus = float(Focus)
+    Happiness = float(Happiness)
+    Money = float(Money)
+    Energy = float(Energy)
+
     # Applying var changes from var: 'stat changes'
     Temp = float(StatChanges[0])
     Trouble = Trouble + Temp
@@ -213,7 +220,7 @@ def ApplyScenarioStatChanges():
         # Rerun mainscenario
         MainScenario()
 
-# Handle moving on time, Period and day
+# Handle moving on time, Period, day and autosave 
 def TimeLogic(): 
 
     # Globals again
@@ -221,7 +228,7 @@ def TimeLogic():
     global Period
 
     # End of day
-    if str(Period) == 6: 
+    if str(Period) == "6": 
         
         # Move on day
         if Day in ["Mon"]:
@@ -237,6 +244,9 @@ def TimeLogic():
         
         # Reset period 
         Period = 1
+
+        # Save game
+        WriteSave()
     
     # Not end of day
     else:
@@ -313,7 +323,7 @@ def PrintStats():
         if TempPlaceholder < -10:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
         elif TempPlaceholder == -10:
-            print("|" + str(TempPlaceholder) + " | ==========|----------" + " - " + DisplayName)
+            print("|" + str(TempPlaceholder) + "| ==========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -9:
             print("|" + str(TempPlaceholder) + " | -=========|----------" + " - " + DisplayName)
         elif TempPlaceholder <= -8:
@@ -355,7 +365,7 @@ def PrintStats():
         elif TempPlaceholder <= 9:
             print("|", TempPlaceholder, "| ----------|=========-" + " - " + DisplayName)
         elif TempPlaceholder <= 10:
-            print("|", TempPlaceholder, "| ----------|==========" + " - " + DisplayName)
+            print("|", TempPlaceholder, " | ----------|==========" + " - " + DisplayName)
         else:
             print("huh that value does not seem to be inside the normal range of -10 to 10")
 
@@ -379,11 +389,79 @@ def AfterMessagePrint():
         print("| [-] | - " + AfterMessage)
         input("| [!] | >>>")
 
+def DebugInput():
+    
+    # DEBUG
+    input("Debug Input!")
+
+# Save
+def WriteSave():
+
+    # Globals
+    global Directory
+    global Trouble
+    global Focus
+    global Happiness
+    global Money
+    global Energy
+    global Period
+    global Day
+    global Lesson
+
+    # Open save in configparser
+    Save = configparser.ConfigParser()
+    Save.read(Directory + "Saves/Save.ini")
+
+    # Write vars using configparser 
+    Save.set("Time", "period", str(Period))
+    Save.set("Time", "day", str(Day))
+    Save.set("Stats", "trouble", str(Trouble))
+    Save.set("Stats", "focus", str(Focus))
+    Save.set("Stats", "happiness", str(Happiness))
+    Save.set("Stats", "money", str(Money))
+    Save.set("Stats", "energy", str(Energy))
+
+    # Save to file
+    with open(Directory + "Saves/Save.ini", "w") as File:
+        Save.write(File)
+
+def LoadSave():
+
+    # Globals
+    global Directory
+    global Trouble
+    global Focus
+    global Happiness
+    global Money
+    global Energy
+    global Period
+    global Day
+    global Lesson
+
+    # Open save in configparser
+    Save = configparser.ConfigParser()
+    Save.read(Directory + "Saves/Save.ini")
+
+    # Read vars using configparser 
+    Period = Save["Time"]["period"]
+    Day = Save["Time"]["day"]
+    Trouble = float(Save.get("Stats", "trouble"))
+    Focus = float(Save.get("Stats","focus"))
+    Happiness = float(Save.get("Stats","happiness"))
+    Money = float(Save.get("Stats","money"))
+    Energy = float(Save.get("Stats","energy"))
+
+# Launch / Pre loop
+print("| [?] | SAVE MENU\n| [1] | - Load\n| [2] | - New")
+Option = str(input("| [?] | >>>"))
+if Option == "1":
+    LoadSave()
+else:
+    WriteSave()
+
 # Game Loop
-# Look above for explaination
 while True:
 
     GetScenario()
     MainScenario()
     TimeLogic()
-    
