@@ -2,33 +2,48 @@
 # Import
 import os
 
-# DEVELOPER
-Dev = True
+# Default to default directory
+os.chdir("")
 
-# Code
-if Dev:
-    Branch = "Saving"
-else:
-    Branch = "main"
-
-# Check for git
-print("INSTALLATION REQUIRES GIT")
-print("Press any key to start")
-input(">>>")
+# Take input
+print("| [!] | INSTALLER/UNINSTALLER\n| [1] | - Install\n| [2] | - Update\n| [3] | - Uninstall")
+Option = str(input("| [?] | >>>"))
 
 # Install
-try:
+if Option.lower() == "1":
 
-    # Reinstall
-    print("SAY Y TWICE!")
-    os.system("rm -r Ruben-Sim")
+    # Take input
+    print("| [!] | INSTALLING\n| [1] | - Install\n| [2] | - Reinstall")
+    Option = str(input("| [?] | >>>"))
 
-    # Github Clone
-    print("Cloning From Github")
-    os.system("git clone https://github.com/Herator2/Ruben-Sim.git --branch " + Branch)
-    print("Cloned.")
+    # Reinstall - Clear folder
+    if Option.lower() == "1":
+        os.system("rm -r Ruben-Sim")
 
-    # Make config
+    # Install
+
+    # Take input
+    print("| [!] | HOW TO INSTALL\n| [1] | - Git\n| [2] | - Github-cli")
+    Option = str(input("| [?] | >>>"))
+
+    # Clone
+
+    # Git
+    if Option.lower() == "1":
+        print("Cloning From Github Via Git")
+        os.system("git clone https://github.com/Herator2/Ruben-Sim.git")
+
+    # Github-cli
+    elif Option.lower() == "2":
+        print("Cloning From Github Via Github-cli")
+        os.system("gh repo clone Herator2/Ruben-Sim")
+
+    # Specific branch git
+    else:
+        print("Cloning From Github Branch " + Option + " via git")
+        os.system("git clone https://github.com/Herator2/Ruben-Sim.git --branch " + Option)
+
+    # Generate config
     print("Making Config...")
     with open("Ruben-Sim/config.ini", "w+") as Config:
         Config.write("[Main]\n")
@@ -36,13 +51,17 @@ try:
         Config.write("Directory = Ruben-Sim/\n")
         print("Config created in home directory as config.ini:")
         print("[Main]\nLinux = True\nDirectory = Ruben-Sim\n")
-    
-    # Print
-    print("Successful Install!")
-    print("Use python3 Ruben-Sim/Main.py to start!")
 
-# Installation error
-except Exception as ErrorMSG:
-    print("Exeption:", ErrorMSG, "occured")
-    print("Please contact Herator2 or make a issue on the github repo")
-    
+    # Print
+    print("Operation Finished")
+
+# Uninstall
+elif Option.lower() == "3":
+
+    # Take comfirmation
+    print("| [!] | CONFIRM  D E L E T I O N\n| [1] | - DOO IT!\n| [2] | - Go Back...")
+    Option = str(input("| [?] | >>>"))
+
+    if Option.lower() == "1":
+        # Remove it
+        os.system("rm -r Ruben-Sim")
